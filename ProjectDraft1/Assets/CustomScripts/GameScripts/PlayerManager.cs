@@ -25,16 +25,6 @@ public class PlayerManager : MonoBehaviour
     }
     private PlayerState currState;
 
-    //Active gun type
-    private enum GunType
-    {
-        None,
-        Lead,
-        HeavyLead,
-        Blessed
-    }
-    private GunType currGun = GunType.None;
-
     //Track Player UI
 
 
@@ -85,14 +75,18 @@ public class PlayerManager : MonoBehaviour
                 break;
 
             case PlayerState.Shooting:
+                //Always check if there are enemies left
+                if (WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining() <= 0)
+                {
+                    currState = PlayerState.Moving;
+                }
+
                 //TODO: Show Shooty bang bang UI
                 //If tap/click is detected
                 if (Input.GetMouseButtonDown(0))
                 {
                     Shoot(Input.mousePosition);
                 }
-
-                currGun = GunType.Lead;
 
                 break;
 
@@ -105,6 +99,13 @@ public class PlayerManager : MonoBehaviour
     //Called when the player needs to bang
     private void Shoot(Vector3 hitLoc)
     {
+        //Determine which gun is being shot
+        string currGun = Player.GetComponent<WeaponTracker>().getType();
+        float baseDamage = Player.GetComponent<WeaponTracker>().getDamage();
+
+        //Check for upgrades to gun type being used
+        int gunRank = 1;
+
         //Make ray to go straight forward (No drop coz fuck that)
         Ray bullet = Camera.GetComponent<Camera>().ScreenPointToRay(hitLoc);
         RaycastHit Impact;
@@ -121,7 +122,7 @@ public class PlayerManager : MonoBehaviour
                 //Destroy(Impact.collider.gameObject);
 
                 //Call enemy hit function giving data from native script Fuck that fucker up
-                Impact.collider.gameObject.GetComponent<EnemyLogic>().getHit(10.0f, "Lead", 1);
+                Impact.collider.gameObject.GetComponent<EnemyLogic>().getHit(baseDamage, currGun, gunRank);
             }
         }
     }

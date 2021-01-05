@@ -197,7 +197,7 @@ public class EnemyLogic : MonoBehaviour
                 health -= bulletDamage * 0.20f + bulletRank;
             }
 
-            else if (bulletType == " Blessed")
+            else if (bulletType == "Blessed")
             {
                 //In accordance with Rock-paper-scissors template, ignore all damage from energy weapons
                 
@@ -219,9 +219,9 @@ public class EnemyLogic : MonoBehaviour
                 //Take direct damage, doubly multiplicative rank scaling
                 health -= bulletDamage * bulletRank * 2; /*Thi shit is OP, why is this like this?*/
             }
-        }
 
-        Debug.Log("New health: " + health);
+            Debug.Log("New health: " + health);
+        }
 
         //Once health reaches 0 destroy self
         if(health <= 0) {Destroy(gameObject);}
