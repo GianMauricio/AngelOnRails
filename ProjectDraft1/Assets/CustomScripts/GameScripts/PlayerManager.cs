@@ -88,6 +88,11 @@ public class PlayerManager : MonoBehaviour
                     Shoot(Input.mousePosition);
                 }
 
+                if (WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining() <= 0)
+                {
+                    currState = PlayerState.Moving;
+                }
+
                 break;
 
             case PlayerState.Crouched: /*Will also revert to this state when not peeking*/

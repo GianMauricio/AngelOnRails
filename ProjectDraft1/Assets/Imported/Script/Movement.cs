@@ -9,10 +9,6 @@ public class Movement : MonoBehaviour
     [SerializeField] Camera MainView;
     [SerializeField] GameObject Player;
 
-    private int Armor = 100;
-    private float Armor_Rank = 3;
-    private int Health = 100;
-
     Vector3 CameraRotation;
     // Start is called before the first frame update
     void Start()
