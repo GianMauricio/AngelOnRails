@@ -10,7 +10,7 @@ public class UIScript : MonoBehaviour
     public Image healthBar, ammoBar, enemyBar, levelBar;
 
     //Track maximums
-    private float maxHealth, maxAmmo;
+    private float maxHealth;
     private int waypointsTotal, enemiesTotal;
 
     //TODO: WeaponSlider
@@ -30,7 +30,7 @@ public class UIScript : MonoBehaviour
         healthBar.fillAmount = newhealth / maxHealth;
     }
 
-    public void setAmmo(float newAmmo)
+    public void setAmmo(float newAmmo, float maxAmmo)
     {
         ammoBar.fillAmount = newAmmo / maxAmmo;
     }

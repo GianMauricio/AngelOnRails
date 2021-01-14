@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -24,9 +25,6 @@ public class PlayerManager : MonoBehaviour
         Crouched,
     }
     private PlayerState currState;
-
-    //Track Player UI
-
 
     //Track player position
     private Vector3 CurrPos;
@@ -105,8 +103,9 @@ public class PlayerManager : MonoBehaviour
     private void Shoot(Vector3 hitLoc)
     {
         //Determine which gun is being shot
-        string currGun = Player.GetComponent<WeaponTracker>().getType();
-        float baseDamage = Player.GetComponent<WeaponTracker>().getDamage();
+        WeaponTracker gunStats = Player.GetComponent<WeaponTracker>();
+        string currGun = gunStats.getType();
+        float baseDamage = gunStats.getDamage();
 
         //Check for upgrades to gun type being used
         int gunRank = 1;
@@ -115,20 +114,24 @@ public class PlayerManager : MonoBehaviour
         Ray bullet = Camera.GetComponent<Camera>().ScreenPointToRay(hitLoc);
         RaycastHit Impact;
 
-        //Store hit data
-        if (Physics.Raycast(bullet, out Impact))
+        //If the player has ammo for that type, proceed to hit calculations
+        if (gunStats.ammoLeft() > 0)
         {
-            Debug.Log("Shot collided with: " + Impact.transform.tag);
-            //check if the thing hit was an actual enemy
-            if (Impact.collider.CompareTag("BasicEnemy") || Impact.collider.CompareTag("ArmoredEnemy")
-                || Impact.collider.CompareTag("ShieldedEnemy") || Impact.collider.CompareTag("ProtectedEnemy"))
+            //Store hit data
+            if (Physics.Raycast(bullet, out Impact))
             {
-                //Debug damage set (IT FUCKING WORKS AHAHAHAHAHAH)
-                //Destroy(Impact.collider.gameObject);
-
-                //Call enemy hit function giving data from native script Fuck that fucker up
-                Impact.collider.gameObject.GetComponent<EnemyLogic>().getHit(baseDamage, currGun, gunRank);
+                //Debug.Log("Shot collided with: " + Impact.transform.tag);
+                //Check if the thing hit was an actual enemy
+                if (Impact.collider.CompareTag("BasicEnemy") || Impact.collider.CompareTag("ArmoredEnemy") || 
+                    Impact.collider.CompareTag("ShieldedEnemy") || Impact.collider.CompareTag("ProtectedEnemy"))
+                {
+                    //Call enemy hit function giving data from native script Fuck that fucker up
+                    Impact.collider.gameObject.GetComponent<EnemyLogic>().getHit(baseDamage, currGun, gunRank);
+                }
             }
+
+            //Update UI stuff
+            gunStats.shotFired();
         }
     }
 

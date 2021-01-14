@@ -24,14 +24,10 @@ public class MainMenuButtons : MonoBehaviour
         }
     }
 
-    public void toLevelSelect()
+    public void play()
     {
-        
-    }
-
-    public void toSettings()
-    {
-
+        SceneManager.LoadScene("BetaLevel", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("MenuSceneActive");
     }
 
     public void toLastLevel()

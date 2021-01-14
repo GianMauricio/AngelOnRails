@@ -15,6 +15,7 @@ TagManager:
   - ArmoredEnemy
   - ShieldedEnemy
   - ProtectedEnemy
+  - UIObject
   layers:
   - Default
   - TransparentFX

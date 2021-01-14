@@ -11,9 +11,6 @@ public class EnemyCommander : MonoBehaviour
     private int nCurrWave;
     private int nWavesLeft;
 
-    //Track active enemies
-    private int enemiesAlive = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +21,24 @@ public class EnemyCommander : MonoBehaviour
     //Get all enemies still alive
     public int enemiesRemaining()
     {
-        checkEnemies();
+        var enemiesAlive = 0;
+        //This logic took me 3 fucking days to fix goddamn it
+        //For every wave *Note: use hard logic, avoid var at all costs
+        foreach (GameObject child in Waves)
+        {
+            //For every enemy
+            for (int j = 1; j < child.transform.childCount; j++) /*j is one to skip the spawn door*/
+            {
+                EnemyLogic currChild = child.transform.GetChild(j).GetComponent<EnemyLogic>();
+
+                if (currChild.isDead())
+                {
+                    enemiesAlive++;
+                }
+            }
+        }
+
+        //Debug.Log(enemiesAlive);
         return enemiesAlive;
     }
 
@@ -34,31 +48,7 @@ public class EnemyCommander : MonoBehaviour
         {
             //Activate requested wave
             Waves[nCurrWave].SetActive(true);
-
-            enemiesAlive = 0;
-            foreach (Transform child in Waves[nCurrWave].transform)
-            {
-                if (child.CompareTag("BasicEnemy") || child.CompareTag("ShieldedEnemy") ||
-                    child.CompareTag("ArmoredEnemy") || child.CompareTag("ProtectedEnemy"))
-                {
-                    enemiesAlive++;
-                }
-            }
-
             nCurrWave++;
-        }
-    }
-
-    private void checkEnemies()
-    {
-        enemiesAlive = 0;
-        foreach (Transform child in Waves[nCurrWave].transform)
-        {
-            if (child.CompareTag("BasicEnemy") || child.CompareTag("ShieldedEnemy") ||
-                child.CompareTag("ArmoredEnemy") || child.CompareTag("ProtectedEnemy"))
-            {
-                enemiesAlive++;
-            }
         }
     }
 }

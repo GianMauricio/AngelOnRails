@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2234624880603534347}
   m_Layer: 2
   m_Name: RightUI
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 5789351742017885327}
   m_Layer: 2
   m_Name: Content
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 7895656366493969963}
   m_Layer: 2
   m_Name: WeaponSliderBG
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3841502624670870967}
   m_Layer: 2
   m_Name: AmmoFill
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 862200159527442820}
   m_Layer: 2
   m_Name: Perspective
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 3329134658847351093}
   m_Layer: 2
   m_Name: Energy
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 1559265178372242150}
   m_Layer: 2
   m_Name: Heavylead
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 988209831857208143}
   m_Layer: 2
   m_Name: HealthFill
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 502898344529881735}
   m_Layer: 2
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 6869240122310179468}
   m_Layer: 2
   m_Name: LevelProgressBG
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1013,7 +1013,7 @@ GameObject:
   - component: {fileID: 1773720565325734965}
   m_Layer: 2
   m_Name: Viewport
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 807946262072547755}
   m_Layer: 2
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 3117534431879265783}
   m_Layer: 2
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 4400757748261708500}
   m_Layer: 2
   m_Name: EnemiesRemainingBG
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1441,7 +1441,7 @@ GameObject:
   - component: {fileID: 3562854821559478440}
   m_Layer: 2
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1574,7 +1574,7 @@ GameObject:
   - component: {fileID: 4088817292321893563}
   m_Layer: 2
   m_Name: LevelProgressFill
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1649,7 +1649,7 @@ GameObject:
   - component: {fileID: 2031624249437667670}
   m_Layer: 2
   m_Name: EnemiesRemainingTitle
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 1465786923135539089}
   m_Layer: 2
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2172,6 +2172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408f6a3db4851fc43b0ecf4dd29b2a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 7199647064917687208}
 --- !u!1 &6603916337444536379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,7 +2186,7 @@ GameObject:
   - component: {fileID: 4688194906298895699}
   m_Layer: 2
   m_Name: AmmoBG
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2260,7 +2261,7 @@ GameObject:
   - component: {fileID: 3854654510611194428}
   m_Layer: 2
   m_Name: Lead
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2389,7 +2390,7 @@ GameObject:
   - component: {fileID: 5584375804760088666}
   m_Layer: 2
   m_Name: Text (TMP) (1)
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2522,7 +2523,7 @@ GameObject:
   - component: {fileID: 4253582817186904043}
   m_Layer: 2
   m_Name: EnemiesRemainingFill
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2597,7 +2598,7 @@ GameObject:
   - component: {fileID: 2281592952339514100}
   m_Layer: 2
   m_Name: Scroll View
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2702,7 +2703,7 @@ GameObject:
   - component: {fileID: 378744480850513012}
   m_Layer: 2
   m_Name: HealthBG
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2776,7 +2777,7 @@ GameObject:
   - component: {fileID: 8706320113067489160}
   m_Layer: 2
   m_Name: LeftUI
-  m_TagString: Untagged
+  m_TagString: UIObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

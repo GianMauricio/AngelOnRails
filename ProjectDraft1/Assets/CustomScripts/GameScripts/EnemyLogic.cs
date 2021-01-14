@@ -29,7 +29,7 @@ public class EnemyLogic : MonoBehaviour
     {
         Debug.Log("EnemyActive");
 
-        //Set current poition as final position
+        //Set current position as final position
         DestPos = transform.position;
         transform.position = SpawnLoc.GetComponent<Transform>().position;
 
@@ -97,7 +97,7 @@ public class EnemyLogic : MonoBehaviour
                     shield = 30;
                 }
 
-                else { Debug.Log("Self tage not recognized, self terminating to maintain integrity"); }
+                else { Debug.Log("Self tag not recognized, self terminating to maintain integrity"); }
                 break;
 
             case 3:
@@ -129,7 +129,7 @@ public class EnemyLogic : MonoBehaviour
                     shield = 40;
                 }
 
-                else { Debug.Log("Self tage not recognized, self terminating to maintain integrity"); }
+                else { Debug.Log("Self tag not recognized, self terminating to maintain integrity"); }
                 break;
 
             default:
@@ -220,10 +220,19 @@ public class EnemyLogic : MonoBehaviour
                 health -= bulletDamage * bulletRank * 2; /*Thi shit is OP, why is this like this?*/
             }
 
-            Debug.Log("New health: " + health);
+            //Debug.Log("New health: " + health);
         }
 
         //Once health reaches 0 destroy self
-        if(health <= 0) {Destroy(gameObject);}
+        if (health <= 0)
+        {
+            this.GetComponent<MeshCollider>().enabled = false;
+            this.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
+    public bool isDead()
+    {
+        return health > 0;
     }
 }
