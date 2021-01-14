@@ -34,9 +34,6 @@ public class PlayerManager : MonoBehaviour
     //Track player waypoint number
     private int nWaypointNum = 0;
 
-    //Are there still enemies in the current phase
-    private bool bDangerClose = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -74,21 +71,28 @@ public class PlayerManager : MonoBehaviour
 
             case PlayerState.Shooting:
                 //Always check if there are enemies left
+                updateProgress();
                 if (WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining() <= 0)
                 {
                     currState = PlayerState.Moving;
                 }
 
-                //TODO: Show Shooty bang bang UI
                 //If tap/click is detected
                 if (Input.GetMouseButtonDown(0))
                 {
                     Shoot(Input.mousePosition);
                 }
 
-                if (WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining() <= 0)
+                //If rotation/R key is detected
+                else if (Input.GetKeyDown(KeyCode.R))
                 {
-                    currState = PlayerState.Moving;
+                    Player.GetComponent<WeaponTracker>().tryReload();
+                }
+
+                //If swipe/C key is detected
+                else if (Input.GetKeyDown(KeyCode.C))
+                {
+                    //TODO:implement crouching
                 }
 
                 break;
@@ -114,6 +118,9 @@ public class PlayerManager : MonoBehaviour
         Ray bullet = Camera.GetComponent<Camera>().ScreenPointToRay(hitLoc);
         RaycastHit Impact;
 
+        //Save whether or not the bullet was a killshot
+        bool killedSomething = false;
+
         //If the player has ammo for that type, proceed to hit calculations
         if (gunStats.ammoLeft() > 0)
         {
@@ -126,13 +133,34 @@ public class PlayerManager : MonoBehaviour
                     Impact.collider.CompareTag("ShieldedEnemy") || Impact.collider.CompareTag("ProtectedEnemy"))
                 {
                     //Call enemy hit function giving data from native script Fuck that fucker up
-                    Impact.collider.gameObject.GetComponent<EnemyLogic>().getHit(baseDamage, currGun, gunRank);
+                    killedSomething = Impact.collider.gameObject.GetComponent<EnemyLogic>().getHit(baseDamage, currGun, gunRank);
                 }
             }
 
             //Update UI stuff
             gunStats.shotFired();
         }
+
+        //Debug.Log(killedSomething);
+
+        //if the shot killed, tell the UI about it
+        if (killedSomething)
+        {
+            updateProgress();
+        }
+    }
+
+    //Function dedicated to making the UI not shit and cry
+    private void updateProgress()
+    {
+        //Set-up data
+        WeaponTracker PlayerRef = Player.GetComponent<WeaponTracker>();
+        EnemyCommander DirectorRef = WaveMaster.GetComponent<EnemyCommander>();
+        int enemiesLeft = DirectorRef.enemiesRemaining(), 
+            enemiesMax = DirectorRef.enemiesTotal();
+
+        //Debug.Log(enemiesLeft + " / " + enemiesMax);
+        PlayerRef.tryKill(enemiesLeft, enemiesMax);
     }
 
     //This controls the level progression

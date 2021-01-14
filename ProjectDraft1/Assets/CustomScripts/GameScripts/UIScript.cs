@@ -11,7 +11,6 @@ public class UIScript : MonoBehaviour
 
     //Track maximums
     private float maxHealth;
-    private int waypointsTotal, enemiesTotal;
 
     //TODO: WeaponSlider
 
@@ -35,13 +34,8 @@ public class UIScript : MonoBehaviour
         ammoBar.fillAmount = newAmmo / maxAmmo;
     }
 
-    public void setProgress(float newProgress)
+    public void setKillCount(float enemiesLeft, float enemiesTotal)
     {
-        ammoBar.fillAmount = newProgress / waypointsTotal;
-    }
-
-    public void setKillCount(float newKills)
-    {
-        enemyBar.fillAmount = (enemiesTotal - newKills) / enemiesTotal;
+        enemyBar.fillAmount = enemiesLeft / enemiesTotal;
     }
 }

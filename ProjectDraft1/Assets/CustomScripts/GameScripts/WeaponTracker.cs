@@ -16,6 +16,7 @@ public class WeaponTracker : MonoBehaviour
     private int leadAmmo = 100, heavyAmmo = 50, blessedAmmo = 20;
     private int leadClips = 3, heavyClips = 2, blessedClips = 1;
 
+    //Switch gun to selected type
     public void setLead()
     {
         //Debug.Log("Switched To Lead");
@@ -37,6 +38,75 @@ public class WeaponTracker : MonoBehaviour
         updateUI();
     }
 
+    //Reload current gun based on gun type
+    public void tryReload()
+    {
+        switch (GunType)
+        {
+            case "Lead":
+            {
+                Debug.Log("Reloading lead");
+                if (leadClips > 0)
+                {
+                    leadClips--;
+                    leadAmmo = MAXLEAD;
+                }
+
+                else
+                {
+                    Debug.Log("No clips");
+                    //TODO: make the clicky sound effect when you have no ammo
+                }
+
+                break;
+            }
+            case "HeavyLead":
+            {
+                Debug.Log("Reloading Hlead");
+                if (heavyClips > 0)
+                {
+                    heavyClips--;
+                    heavyAmmo = MAXHLEAD;
+                }
+
+                else
+                {
+                    Debug.Log("No clips");
+                    //TODO: make the clicky sound effect when you have no ammo
+                }
+
+                break;
+            }
+            case "Blessed":
+            {
+                Debug.Log("Reloading Blessings");
+                if (blessedClips > 0)
+                {
+                    blessedClips--;
+                    blessedAmmo = MAXBLESS;
+                }
+
+                else
+                {
+                    Debug.Log("No clips");
+                    //TODO: make the clicky sound effect when you have no ammo
+                }
+
+                break;
+            }
+        }
+
+        //Tell UI to update:
+        updateUI();
+    }
+
+    //Tell UI that an enemy died
+    public void tryKill(float enemiesLeft, float enemiesTotal)
+    {
+        HUD.setKillCount(enemiesLeft, enemiesTotal);
+    }
+
+    //Retrieve data
     public string getType()
     {
         return GunType;
@@ -107,6 +177,7 @@ public class WeaponTracker : MonoBehaviour
         updateUI();
     }
 
+    //Display data (internal ref)
     private int getMax()
     {
         if (GunType == "Lead")

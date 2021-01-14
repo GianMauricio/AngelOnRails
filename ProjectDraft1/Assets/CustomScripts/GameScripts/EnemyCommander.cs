@@ -8,7 +8,7 @@ public class EnemyCommander : MonoBehaviour
     public List<GameObject> Waves;
 
     //Track current wave
-    private int nCurrWave;
+    private int nCurrWave = 0;
     private int nWavesLeft;
 
     // Start is called before the first frame update
@@ -23,15 +23,19 @@ public class EnemyCommander : MonoBehaviour
     {
         var enemiesAlive = 0;
         //This logic took me 3 fucking days to fix goddamn it
-        //For every wave *Note: use hard logic, avoid var at all costs
+        //For every wave *Note: use hard logic in loops, avoid var at all costs
         foreach (GameObject child in Waves)
         {
             //For every enemy
-            for (int j = 1; j < child.transform.childCount; j++) /*j is one to skip the spawn door*/
+            for (int j = 0; j < child.transform.childCount; j++)
             {
-                EnemyLogic currChild = child.transform.GetChild(j).GetComponent<EnemyLogic>();
+                //if the child is not an enemy do not execute this
+                if (child.transform.GetChild(j).GetComponent<EnemyLogic>() == null) continue;
 
-                if (currChild.isDead())
+                EnemyLogic currChild = child.transform.GetChild(j).GetComponent<EnemyLogic>();
+                //Debug.Log(currChild.isDead());
+
+                if (!currChild.isDead())
                 {
                     enemiesAlive++;
                 }
@@ -40,6 +44,20 @@ public class EnemyCommander : MonoBehaviour
 
         //Debug.Log(enemiesAlive);
         return enemiesAlive;
+    }
+
+    public int enemiesTotal()
+    {
+        var enemiesSpawned = 0;
+        //For every enemy in the current wave
+        foreach (Transform child in Waves[nCurrWave - 1].transform)
+        {
+            if (child.GetComponent<EnemyLogic>() == null) continue;
+            enemiesSpawned++;
+        }
+
+        //Debug.Log(enemiesSpawned);
+        return enemiesSpawned;
     }
 
     public void DeployNextWave()

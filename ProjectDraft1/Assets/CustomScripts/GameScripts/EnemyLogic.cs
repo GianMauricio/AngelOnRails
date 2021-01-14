@@ -11,9 +11,11 @@ public class EnemyLogic : MonoBehaviour
     private float DistFrac = 0;
     private static float SPEED = 0.03f;
 
+    private bool hasDied = true;
+
     public int Rank;
 
-    private float health;
+    public float health;
     private float armor;
     private float shield;
 
@@ -27,7 +29,8 @@ public class EnemyLogic : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("EnemyActive");
+        //Debug.Log("EnemyActive");
+        hasDied = false;
 
         //Set current position as final position
         DestPos = transform.position;
@@ -158,8 +161,10 @@ public class EnemyLogic : MonoBehaviour
     }
 
     //Enemy will handle incoming projectile
-    public void getHit(float bulletDamage, string bulletType, int bulletRank)
+    public bool getHit(float bulletDamage, string bulletType, int bulletRank)
     {
+        //Debug.Log(health);
+
         //If the enemy has a shield absorb damage
         if (shield > 0)
         {
@@ -174,6 +179,8 @@ public class EnemyLogic : MonoBehaviour
                 //Do percentage type damage, multiplicative rank scaling
                 shield -= shield * (bulletDamage * bulletRank) / 100;
             }
+
+            return false;
         }
 
         //If the enemy has armor refract damage
@@ -202,6 +209,8 @@ public class EnemyLogic : MonoBehaviour
                 //In accordance with Rock-paper-scissors template, ignore all damage from energy weapons
                 
             }
+
+            return false;
         }
 
         //If the enemy still has health
@@ -221,18 +230,27 @@ public class EnemyLogic : MonoBehaviour
             }
 
             //Debug.Log("New health: " + health);
+            return false;
         }
 
-        //Once health reaches 0 destroy self
+        //Once health reaches 0
         if (health <= 0)
         {
-            this.GetComponent<MeshCollider>().enabled = false;
             this.GetComponent<MeshRenderer>().enabled = false;
+            this.GetComponent<MeshCollider>().enabled = false;
+
+            hasDied = true;
+
+            return true;
         }
+
+        //Should never happen
+        Debug.Log("Log weird enemy death sequence");
+        return true;
     }
 
     public bool isDead()
     {
-        return health > 0;
+        return hasDied;
     }
 }

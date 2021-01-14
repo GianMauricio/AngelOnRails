@@ -10,7 +10,7 @@ public class WaypointTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player has entered waypoint");
+            //Debug.Log("Player has entered waypoint");
             PlayerDirector.GetComponent<PlayerManager>().Arrived();
         }
     }
