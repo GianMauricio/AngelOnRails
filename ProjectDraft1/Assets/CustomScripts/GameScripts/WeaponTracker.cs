@@ -224,57 +224,40 @@ public class WeaponTracker : MonoBehaviour
     /// Play sound based on current weapon and prompt from the player manager
     /// </summary>
     /// <param name="prompt">Pew for shot sound, Rel for reload sound</param>
-    public void playShot(string prompt)
+    public void playAudio(string prompt)
     {
-        if (prompt == "Pew")
+        switch (prompt)
         {
-            if (GunType == "Lead")
-            {
+            //Shoot
+            case "Pew" when GunType == "Lead":
                 SoundBoard.playSound("Lead", 1);
-            }
-
-            else if (GunType == "HeavyLead")
-            {
-
-            }
-
-            else if (GunType == "Blessed")
-            {
-
-            }
-
-            else
-            {
+                break;
+            case "Pew" when GunType == "HeavyLead":
+                SoundBoard.playSound("HLead", 1);
+                break;
+            case "Pew" when GunType == "Blessed":
+                SoundBoard.playSound("Blessed", 1);
+                break;
+            case "Pew":
                 Debug.Log("TF gun do you have?");
-            }
-        }
+                break;
 
-        else if (prompt == "Rel")
-        {
-            if (GunType == "Lead")
-            {
-
-            }
-
-            else if (GunType == "HeavyLead")
-            {
-
-            }
-
-            else if (GunType == "Blessed")
-            {
-
-            }
-
-            else
-            {
+            //Reload
+            case "Rel" when GunType == "Lead":
+                SoundBoard.playSound("Lead", 2);
+                break;
+            case "Rel" when GunType == "HeavyLead":
+                SoundBoard.playSound("HLead", 2);
+                break;
+            case "Rel" when GunType == "Blessed":
+                SoundBoard.playSound("Blessed", 2);
+                break;
+            case "Rel":
                 Debug.Log("TF gun do you have?");
-            }
-        }
-
-        else
-        {
-            Debug.Log("No such audio exists");
+                break;
+            default:
+                Debug.Log("No such audio exists");
+                break;
         }
     }
 }

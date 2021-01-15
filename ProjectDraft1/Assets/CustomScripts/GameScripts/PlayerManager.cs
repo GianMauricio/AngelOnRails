@@ -206,6 +206,9 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
             //Update UI stuff
             gunStats.shotFired();
+
+            //Ping audio boards
+            gunStats.playAudio("Pew");
         }
 
         //Debug.Log(killedSomething);
@@ -278,10 +281,14 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     //Touch functions
     public void OnSwipe(SwipeEventArgs swipeData)
     {
+        WeaponTracker gunStats = Player.GetComponent<WeaponTracker>();
         //If down then reload
         if (swipeData.Direction == Directions.DOWN)
         {
             Player.GetComponent<WeaponTracker>().tryReload();
+
+            //Ping audio boards
+            gunStats.playAudio("Pew");
         }
     }
 
