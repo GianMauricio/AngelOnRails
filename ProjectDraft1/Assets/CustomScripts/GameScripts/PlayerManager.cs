@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 {
     //Statics
     private static float moveSpeed = 0.05f;
@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     //Track all possible way-points, last way-point is automatically designated as exit
     public List<GameObject> Waypoints;
     public GameObject Player;
-    public GameObject Camera;
+    public GameObject Eyes;
 
     //Track enemy status
     public GameObject WaveMaster;
@@ -34,6 +34,27 @@ public class PlayerManager : MonoBehaviour
     //Track player waypoint number
     private int nWaypointNum = 0;
 
+    //Track touch info
+    private Touch aFinger;
+    private Touch bFinger;
+
+    //Touch params
+    public SwipeProperty _swipeProperty;
+    public TwoFingerPanProperty _twoFingerPan;
+
+    //Event params
+    public event EventHandler<SwipeEventArgs> SwipeArgs;
+    public event EventHandler<TwoFingerPanEventArgs> TwoFingerPanArgs;
+
+    //Dynamic touch data
+    private Vector2 start_pos;
+    private Vector2 end_pos;
+    private float gesture_time;
+
+    [Tooltip("Keep this really small or risk losing tap inputs")]
+    private float tapTimer = 0.001f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +63,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (!Target.CompareTag("Waypoint") && !Target.CompareTag("TransitPoint"))
             {
-                Debug.Log("Designated waypoint has no type, movement will lock");
+                Debug.Log("No waypoint detected; how did you get here?");
             }
         }
 
@@ -58,18 +79,22 @@ public class PlayerManager : MonoBehaviour
         progressCheck();
         switch (currState)
         {
+            //If the player is in transit
             case PlayerState.Moving:
-                //TODO: Hide Shooty bang bang UI
+                Player.GetComponent<WeaponTracker>().shiftState(true);
                 //Move player until at next waypoint
                 if (DistFrac < 1)
                 {
                     DistFrac += Time.deltaTime * moveSpeed;
                     Player.GetComponent<Transform>().position = Vector3.Lerp(CurrPos, DestPos, DistFrac);
                 }
-
                 break;
 
+            //If the player is in danger
             case PlayerState.Shooting:
+                //Show shooting UI
+                Player.GetComponent<WeaponTracker>().shiftState(false);
+
                 //Always check if there are enemies left
                 updateProgress();
                 if (WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining() <= 0)
@@ -95,8 +120,50 @@ public class PlayerManager : MonoBehaviour
                     //TODO:implement crouching
                 }
 
+                if (Input.touchCount > 0)
+                {
+                    //If single gesture
+                    if (Input.touchCount == 1)
+                    {
+                        aFinger = Input.GetTouch(0);
+
+                        if (aFinger.phase == TouchPhase.Began)
+                        {
+                            start_pos = aFinger.position;
+                            gesture_time = 0;
+                        }
+
+                        if (aFinger.phase == TouchPhase.Ended)
+                        {
+                            end_pos = aFinger.position;
+
+                            if (gesture_time <= _swipeProperty.MaxGestureTime && Vector2.Distance(start_pos, end_pos) >=
+                                (_swipeProperty.MinSwipeDistance * Screen.dpi))
+                            {
+                                FireSwipeFunction();
+                            }
+
+                            else
+                            {
+                                aFinger = Input.GetTouch(0);
+                                bFinger = Input.GetTouch(1);
+
+                                //If fingers pan then crouch/uncrouch
+                                if (aFinger.phase == TouchPhase.Moved && bFinger.phase == TouchPhase.Moved && 
+                                    Vector2.Distance(aFinger.position, bFinger.position) <= (_twoFingerPan.MaxDistance * Screen.dpi));
+                                {
+                                    FireTwoFingerPan();
+                                }
+                            }
+                        }
+
+                        else gesture_time += Time.deltaTime;
+                    }
+                }
+
                 break;
 
+            //If the player is crouched
             case PlayerState.Crouched: /*Will also revert to this state when not peeking*/
                 //TODO: Show Info UI
                 break;
@@ -115,7 +182,7 @@ public class PlayerManager : MonoBehaviour
         int gunRank = 1;
 
         //Make ray to go straight forward (No drop coz fuck that)
-        Ray bullet = Camera.GetComponent<Camera>().ScreenPointToRay(hitLoc);
+        Ray bullet = Eyes.GetComponent<Camera>().ScreenPointToRay(hitLoc);
         RaycastHit Impact;
 
         //Save whether or not the bullet was a killshot
@@ -206,5 +273,120 @@ public class PlayerManager : MonoBehaviour
 
         //Set new state to shooting, if the waypoint is an actual waypoint
         currState = PlayerState.Shooting;
+    }
+
+    //Touch functions
+    public void OnSwipe(SwipeEventArgs swipeData)
+    {
+        //If down then reload
+        if (swipeData.Direction == Directions.DOWN)
+        {
+            Player.GetComponent<WeaponTracker>().tryReload();
+        }
+    }
+
+    public void OnTwoFingerPan(TwoFingerPanEventArgs panData)
+    {
+        //TODO: Dynamic crouch data (right/left if peeking; up/down if crouching)
+        //If down then crouch
+        if (panData.direction == Directions.DOWN)
+        {
+            currState = PlayerState.Crouched;
+        }
+
+        //If up then uncrouch
+        if (panData.direction == Directions.UP && currState == PlayerState.Shooting)
+        {
+            currState = PlayerState.Shooting; /*Player cannot crouch while moving*/
+        }
+    }
+
+    //Utility Functions
+    private void FireSwipeFunction()
+    {
+        Debug.Log("SWIPE");
+
+        Vector2 diff = end_pos - start_pos;
+
+        GameObject hitObject = GetHit(start_pos);
+        Directions dir;
+
+        if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y))
+        {
+            if (diff.x > 0)
+            {
+                // Debug.Log("Right");
+                dir = Directions.RIGHT;
+            }
+            else
+            {
+                //  Debug.Log("Left");
+                dir = Directions.LEFT;
+            }
+        }
+        else
+        {
+            if (diff.y > 0)
+            {
+                //Debug.Log("up");
+                dir = Directions.UP;
+            }
+
+            else
+            {
+                //Debug.Log("down");
+                dir = Directions.DOWN;
+            }
+        }
+
+        SwipeEventArgs args = new SwipeEventArgs(start_pos, diff, dir, hitObject);
+
+        if (SwipeArgs != null)
+        {
+            SwipeArgs(this, args);
+        }
+
+        this.OnSwipe(args);
+    }
+
+    private void FireTwoFingerPan()
+    {
+        Debug.Log("Panning");
+        //Calculate for change vector
+        Vector2 change = aFinger.position;
+
+        //Logic here is that if the pan happens then aFinger is effectively == to bFinger
+        Debug.Log("Change vector: " + change.x + " , " + change.y);
+
+        TwoFingerPanEventArgs args = new TwoFingerPanEventArgs(aFinger, bFinger, change);
+
+        if (TwoFingerPanArgs != null)
+        {
+            TwoFingerPanArgs(this, args);
+        }
+    }
+    //External utility functions
+    //TODO:Integrate these into the main project via other means
+    private GameObject GetHit(Vector2 screenPos)
+    {
+        Ray r = Camera.main.ScreenPointToRay(start_pos);
+        RaycastHit hit = new RaycastHit();
+        GameObject hitObj = null;
+
+        if (Physics.Raycast(r, out hit, Mathf.Infinity))
+        {
+            hitObj = hit.collider.gameObject;
+        }
+
+        return hitObj;
+    }
+    private Vector2 GetPreviousPoint(Touch t)
+    {
+        return t.position - t.deltaPosition;
+    }
+    private Vector2 GetMidPoint(Vector2 p1, Vector2 p2)
+    {
+        Vector2 ret = new Vector2((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
+        return ret;
     }
 }

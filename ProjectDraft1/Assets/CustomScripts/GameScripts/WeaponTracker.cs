@@ -11,6 +11,9 @@ public class WeaponTracker : MonoBehaviour
     public UIScript HUD;
     private string GunType = "Lead";
 
+    //Manage Audio
+    public AudioManager SoundBoard;
+
     //Ammunition data
     private int MAXLEAD = 100, MAXHLEAD = 50, MAXBLESS = 20;
     private int leadAmmo = 100, heavyAmmo = 50, blessedAmmo = 20;
@@ -201,5 +204,77 @@ public class WeaponTracker : MonoBehaviour
     private void updateUI()
     {
         HUD.setAmmo(ammoLeft(), getMax());
+    }
+
+    public void shiftState(bool isMoving)
+    {
+        if (isMoving)
+        {
+            HUD.hide();
+        }
+
+        else
+        {
+            HUD.show();
+        }
+    }
+
+    //Audio data
+    /// <summary>
+    /// Play sound based on current weapon and prompt from the player manager
+    /// </summary>
+    /// <param name="prompt">Pew for shot sound, Rel for reload sound</param>
+    public void playShot(string prompt)
+    {
+        if (prompt == "Pew")
+        {
+            if (GunType == "Lead")
+            {
+                SoundBoard.playSound("Lead", 1);
+            }
+
+            else if (GunType == "HeavyLead")
+            {
+
+            }
+
+            else if (GunType == "Blessed")
+            {
+
+            }
+
+            else
+            {
+                Debug.Log("TF gun do you have?");
+            }
+        }
+
+        else if (prompt == "Rel")
+        {
+            if (GunType == "Lead")
+            {
+
+            }
+
+            else if (GunType == "HeavyLead")
+            {
+
+            }
+
+            else if (GunType == "Blessed")
+            {
+
+            }
+
+            else
+            {
+                Debug.Log("TF gun do you have?");
+            }
+        }
+
+        else
+        {
+            Debug.Log("No such audio exists");
+        }
     }
 }

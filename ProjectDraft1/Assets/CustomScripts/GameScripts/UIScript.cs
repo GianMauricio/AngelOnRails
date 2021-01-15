@@ -38,4 +38,14 @@ public class UIScript : MonoBehaviour
     {
         enemyBar.fillAmount = enemiesLeft / enemiesTotal;
     }
+
+    public void hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void show()
+    {
+        gameObject.SetActive(true);
+    }
 }
