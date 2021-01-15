@@ -7,12 +7,10 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour
 {
     //Track UI elements
-    public Image healthBar, ammoBar, enemyBar, levelBar;
+    public Image healthBar, ammoBar, enemyBar, levelBar, hurtUI;
 
     //Track maximums
-    private float maxHealth;
-
-    //TODO: WeaponSlider
+    private float MAXHEALTH = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +24,13 @@ public class UIScript : MonoBehaviour
 
     public void setHealth(float newhealth)
     {
-        healthBar.fillAmount = newhealth / maxHealth;
+        healthBar.fillAmount = newhealth / MAXHEALTH;
+
+        //Calc transparency using inverse of current health
+        float newAlpha = 1 - (newhealth / MAXHEALTH);
+
+        //Terrible method but fuck it it works
+        hurtUI.color = new Color(hurtUI.color.a, hurtUI.color.b, hurtUI.color.g, newAlpha);
     }
 
     public void setAmmo(float newAmmo, float maxAmmo)
