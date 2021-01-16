@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This script serves to track the gun data of whatever fire arm the player currently has equipped (at base level)
+/// The main idea of the Weapon tracker script is actually just used to communicate data from the level to the player scripts
+/// This allows the player data to be locally contained
 /// </summary>
 public class WeaponTracker : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class WeaponTracker : MonoBehaviour
     //Manage Audio
     public AudioManager SoundBoard;
 
+    //health data
+    private float MAXHEALTH = 100f;
+    private float health = 100;
+    
     //Ammunition data
     private int MAXLEAD = 100, MAXHLEAD = 50, MAXBLESS = 20;
     private int leadAmmo = 100, heavyAmmo = 50, blessedAmmo = 20;
@@ -180,7 +185,6 @@ public class WeaponTracker : MonoBehaviour
         updateUI();
     }
 
-    //Display data (internal ref)
     private int getMax()
     {
         if (GunType == "Lead")
@@ -206,6 +210,7 @@ public class WeaponTracker : MonoBehaviour
         HUD.setAmmo(ammoLeft(), getMax());
     }
 
+    //Hide UI when moving between waypoints
     public void shiftState(bool isMoving)
     {
         if (isMoving)
@@ -217,6 +222,28 @@ public class WeaponTracker : MonoBehaviour
         {
             HUD.show();
         }
+    }
+
+    //Add progress via waypoints 
+    public void addProgress(float waypointReached, float waypoints)
+    {
+        HUD.setProgress(waypointReached, waypoints);
+    }
+
+    //THE SINGLE MOST IMPORTANT FUNCTION IN THIS SCRIPT DO NOT DELETE OR CHANGE
+    /// <summary>
+    /// Ask the player to eat shit and die
+    /// </summary>
+    /// <param name="incomingDamage">Damage to take</param>
+    /// <returns>returns true if the player is dead</returns>
+    public bool takeDamage(float incomingDamage)
+    {
+        health -= incomingDamage;
+
+        //Update HUD value
+        HUD.setHealth(health);
+
+        return health <= 0;
     }
 
     //Audio data

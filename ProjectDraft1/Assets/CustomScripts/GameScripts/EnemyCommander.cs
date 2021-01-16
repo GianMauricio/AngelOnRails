@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyCommander : MonoBehaviour
 {
@@ -68,5 +70,32 @@ public class EnemyCommander : MonoBehaviour
             Waves[nCurrWave].SetActive(true);
             nCurrWave++;
         }
+    }
+
+    /// <summary>
+    /// Tells a random enemy to generate a shot based on their type and rank
+    /// This function is badly implemented as it technically means that the player is asking enemies to shoot them
+    /// But this is the only way to implement this without dynamic shoot functions that rely on searching for the player
+    /// </summary>
+    public float allowShot()
+    {
+        Debug.Log("Shot request received");
+        float shotDamage = 0;
+
+        //This implementation is slow.
+        //But it's faster than randomizing a number then checking if the number is legal
+        //Fuck you're right
+        //But this means weird gameplay since enemies will mostly likely fire in an ordered manner
+        //Ask for next enemy (that is still alive)
+        foreach (Transform child in Waves[nCurrWave - 1].transform)
+        {
+            if (child.GetComponent<EnemyLogic>() != null)
+            {
+                shotDamage = child.GetComponent<EnemyLogic>().requestDamage();
+                break; /*uSinG brEaK iS bAd imPlem-- well yeah this is terrible implementation. Too Bad!*/
+            }
+        }
+
+        return shotDamage;
     }
 }

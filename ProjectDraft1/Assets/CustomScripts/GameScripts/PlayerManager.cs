@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
+
+public  enum PlayerState
+{
+    Moving,
+    Shooting,
+    Crouched,
+}
 
 public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 {
@@ -18,12 +26,6 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     public GameObject WaveMaster;
 
     //Track current player state
-    private enum PlayerState
-    {
-        Moving,
-        Shooting,
-        Crouched,
-    }
     private PlayerState currState;
 
     //Track player position
@@ -51,9 +53,12 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     private Vector2 end_pos;
     private float gesture_time;
 
+    //Track player timer stuff
+    private float timeExposed = 0;
+    private float MAXTIME = 1.0f; /*TODO:Make this not 1 second in final*/
+
     [Tooltip("Keep this really small or risk losing tap inputs")]
     private float tapTimer = 0.001f;
-
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +79,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(timeExposed);
         //Debug.Log(nWaypointNum);
         //Check current player progress
         progressCheck();
@@ -127,12 +133,14 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
             }/*Legacy PC code*/
 
+                //Process tap immediately
                 if (Input.touchCount > 0)
                 {
                     //If single gesture
                     if (Input.touchCount == 1)
                     {
                         aFinger = Input.GetTouch(0);
+                        Shoot(aFinger.position);
 
                         if (aFinger.phase == TouchPhase.Began)
                         {
@@ -168,17 +176,42 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
                     }
                 }
 
+
+                //Logic for getting shot
+                if (timeExposed >= MAXTIME)
+                {
+                    float incomingDamage = WaveMaster.GetComponent<EnemyCommander>().allowShot();
+                    bool isDead = Player.GetComponent<WeaponTracker>().takeDamage(incomingDamage);
+
+                    Debug.Log(incomingDamage);
+                    //Debug.Log(isDead);
+                    timeExposed = 0f;
+
+                    if (isDead)
+                    {
+                        SceneManager.LoadScene("MenuSceneActive", LoadSceneMode.Additive);
+                        SceneManager.UnloadSceneAsync("BetaLevel");
+                    }
+
+                    else Debug.Log("Shot is non-fatal");
+                }
+
                 break;
 
             //If the player is crouched
             case PlayerState.Crouched: /*Will also revert to this state when not peeking*/
                 //TODO: Show Info UI
+                Debug.Log("Reverting timeExposed");
+                timeExposed = 0f; /*Reset enemy shot counters*/
                 break;
 
             default:
                 Debug.Log("You broke the player");
                 throw new ArgumentOutOfRangeException();
         }
+
+        //TODO: make dead UI and anims
+        timeExposed += Time.deltaTime;
     }
 
     //Called when the player needs to bang
@@ -229,6 +262,12 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
         {
             updateProgress();
         }
+    }
+
+    //Called when the player gets banged
+    public void receiveBullet(float damageIncoming)
+    {
+        Player.GetComponent<WeaponTracker>().takeDamage(damageIncoming);
     }
 
     //Function dedicated to making the UI not shit and cry
@@ -287,6 +326,9 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
         //Set new state to shooting, if the waypoint is an actual waypoint
         currState = PlayerState.Shooting;
+
+        //Increment progress level
+        Player.GetComponent<WeaponTracker>().addProgress(nWaypointNum, Waypoints.Count);
     }
 
     //Touch functions

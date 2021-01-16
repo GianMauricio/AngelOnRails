@@ -43,6 +43,11 @@ public class UIScript : MonoBehaviour
         enemyBar.fillAmount = enemiesLeft / enemiesTotal;
     }
 
+    public void setProgress(float waypointsRemaining, float waypointsTotal)
+    {
+        levelBar.fillAmount = waypointsRemaining / waypointsTotal;
+    }
+
     public void hide()
     {
         gameObject.SetActive(false);

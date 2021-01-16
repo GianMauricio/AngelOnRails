@@ -253,4 +253,14 @@ public class EnemyLogic : MonoBehaviour
     {
         return hasDied;
     }
+
+    public float requestDamage()
+    {
+        float damageDone = 0;
+
+        //Formula is simple AF this needs to change because if enemy is rank three then player is almost guranteed to take 30 dmg
+        damageDone = Rank * 10;
+
+        return damageDone;
+    }
 }
