@@ -100,8 +100,11 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
                 if (WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining() <= 0)
                 {
                     currState = PlayerState.Moving;
-                }
+                } 
+            
 
+            {
+                /*
                 //If tap/click is detected
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -119,6 +122,10 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
                 {
                     //TODO:implement crouching
                 }
+                */
+
+
+            }/*Legacy PC code*/
 
                 if (Input.touchCount > 0)
                 {
@@ -142,22 +149,22 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
                             {
                                 FireSwipeFunction();
                             }
-
-                            else
-                            {
-                                aFinger = Input.GetTouch(0);
-                                bFinger = Input.GetTouch(1);
-
-                                //If fingers pan then crouch/uncrouch
-                                if (aFinger.phase == TouchPhase.Moved && bFinger.phase == TouchPhase.Moved && 
-                                    Vector2.Distance(aFinger.position, bFinger.position) <= (_twoFingerPan.MaxDistance * Screen.dpi));
-                                {
-                                    FireTwoFingerPan();
-                                }
-                            }
                         }
 
                         else gesture_time += Time.deltaTime;
+                    }
+
+                    else if (Input.touchCount > 1)
+                    {
+                        aFinger = Input.GetTouch(0);
+                        bFinger = Input.GetTouch(1);
+
+                        //If fingers pan then crouch/uncrouch
+                        if (aFinger.phase == TouchPhase.Moved && bFinger.phase == TouchPhase.Moved &&
+                            Vector2.Distance(aFinger.position, bFinger.position) <= (_twoFingerPan.MaxDistance * Screen.dpi)) ;
+                        {
+                            FireTwoFingerPan();
+                        }
                     }
                 }
 
@@ -167,6 +174,10 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
             case PlayerState.Crouched: /*Will also revert to this state when not peeking*/
                 //TODO: Show Info UI
                 break;
+
+            default:
+                Debug.Log("You broke the player");
+                throw new ArgumentOutOfRangeException();
         }
     }
 
