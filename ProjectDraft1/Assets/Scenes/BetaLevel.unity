@@ -16945,7 +16945,7 @@ AudioSource:
   m_GameObject: {fileID: 1977253069}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: dbfd996a23286ab4a8d5e9380539c321,
+  OutputAudioMixerGroup: {fileID: -3241768040522807311, guid: dbfd996a23286ab4a8d5e9380539c321,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 45d65b6bd9b95484f86150f4fb83f306, type: 3}
   m_PlayOnAwake: 1
@@ -19229,6 +19229,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1230750393522174643, guid: 0623dee40eb023342b0d4f82ac461242,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80.60962
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907348914559080510, guid: 0623dee40eb023342b0d4f82ac461242,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -80.60962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891693705341947232, guid: 0623dee40eb023342b0d4f82ac461242,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -44.31006
+      objectReference: {fileID: 0}
     - target: {fileID: 3841502624670870967, guid: 0623dee40eb023342b0d4f82ac461242,
         type: 3}
       propertyPath: m_FillAmount
@@ -19314,6 +19329,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6507483314618226917, guid: 0623dee40eb023342b0d4f82ac461242,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6507483314618226919, guid: 0623dee40eb023342b0d4f82ac461242,
         type: 3}
       propertyPath: m_Name
@@ -19343,6 +19363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416635096092069166, guid: 0623dee40eb023342b0d4f82ac461242,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6999512
       objectReference: {fileID: 0}
     - target: {fileID: 9156558383056847475, guid: 0623dee40eb023342b0d4f82ac461242,
         type: 3}
