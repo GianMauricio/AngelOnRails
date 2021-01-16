@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 /// This script holds the data to be used by all scenes in the game.
@@ -10,11 +11,17 @@ using UnityEngine;
 public class DataHolder : MonoBehaviour
 {
     //Settings data
-    private static float DEFAULT_MUSICVOL = 50;
-    private static float DEFAULT_SFXVOL = 50;
+    private static float DEFAULT_MUSICVOL = 0.5f;
+    private static float DEFAULT_SFXVOL = 0.5f;
     private static float DEFAULT_BRIGHTNESS = 60;
 
-    private float n_MusicVolume = 50, n_SFXVolume = 50, n_Brightness = 60;
+    static float MAX_DB = 18.0f;
+
+    private float n_MusicVolume = 0.5f, n_SFXVolume = 0.5f, n_Brightness = 60;
+
+    [Header("Audio")] 
+    public AudioMixer Music;
+    public AudioMixer SFX;
 
     //Level data
     private bool[] levelsCompleted = new bool[10];
@@ -25,12 +32,16 @@ public class DataHolder : MonoBehaviour
     {
         n_MusicVolume = level;
         Debug.Log("New music volume " + n_MusicVolume);
+
+        Music.SetFloat("MusicVol", Mathf.Log10(n_MusicVolume) * MAX_DB);
     }
 
     public void setSFXVol(float level)
     {
         n_SFXVolume = level;
         Debug.Log("New SFX volume " + n_SFXVolume);
+
+        SFX.SetFloat("GunVol", Mathf.Log10(n_SFXVolume) * MAX_DB);
     }
 
     public void setBright(float level)

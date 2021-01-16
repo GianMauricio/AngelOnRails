@@ -129,6 +129,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+        type: 3}
+      propertyPath: Music
+      value: 
+      objectReference: {fileID: 24100000, guid: dbfd996a23286ab4a8d5e9380539c321,
+        type: 2}
+    - target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+        type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 24100000, guid: c64543c9ff2d318428a3d547dbca5e08,
+        type: 2}
     - target: {fileID: 4609241185865478486, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
         type: 3}
       propertyPath: m_Name
