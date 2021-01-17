@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyLogic : MonoBehaviour
 {
     public GameObject SpawnLoc;
+    public AudioSource bangSound;
 
     private Vector3 DestPos;
     private float DistFrac = 0;
@@ -260,6 +261,11 @@ public class EnemyLogic : MonoBehaviour
 
         //Formula is simple AF this needs to change because if enemy is rank three then player is almost guranteed to take 30 dmg
         damageDone = Rank * 10;
+
+        if (!bangSound.isPlaying)
+        {
+            bangSound.Play();
+        }
 
         return damageDone;
     }
