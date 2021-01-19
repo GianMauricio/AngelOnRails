@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 /// <summary>
 /// This script holds the data to be used by all scenes in the game.
@@ -14,9 +15,7 @@ public class DataHolder : MonoBehaviour
     private static float DEFAULT_MUSICVOL = 0.5f;
     private static float DEFAULT_SFXVOL = 0.5f;
     private static float DEFAULT_BRIGHTNESS = 60;
-
-    static float MAX_DB = 18.0f;
-
+    private static float MAX_DB = 18.0f;
     private float n_MusicVolume = 0.5f, n_SFXVolume = 0.5f, n_Brightness = 60;
 
     [Header("Audio")] 
@@ -26,6 +25,9 @@ public class DataHolder : MonoBehaviour
     //Level data
     private bool[] levelsCompleted = new bool[10];
     private int lastlevel = 1;
+
+    //Shop data
+    private int coins, damageUpLead = 1, damageUpHLead = 1, damageUpBLead = 1;
 
     //Set functions
     public void setMusicVol(float level)
@@ -83,6 +85,26 @@ public class DataHolder : MonoBehaviour
         return lastlevel;
     }
 
+    public int getLeadRank()
+    {
+        return damageUpLead;
+    }
+
+    public int getHLeadRank()
+    {
+        return damageUpHLead;
+    }
+
+    public int getBLeadRank()
+    {
+        return damageUpBLead;
+    }
+
+    public int getCoins()
+    {
+        return coins;
+    }
+
     //Reset functions
     public void setAudioDefs()
     {
@@ -96,5 +118,77 @@ public class DataHolder : MonoBehaviour
     {
         n_Brightness = DEFAULT_BRIGHTNESS;
         Debug.Log("New brightness level " + DEFAULT_BRIGHTNESS);
+    }
+
+    //Shop functions
+
+    /// <summary>
+    /// Add coins to player
+    /// </summary>
+    /// <param name="increase">amount to add</param>
+    public void deposit(int increase)
+    {
+        Debug.Log("You now have " + coins + " coins");
+        coins += increase;
+    }
+
+    /// <summary>
+    /// Returns false if the player does not have enough coins
+    /// </summary>
+    /// <param name="decrease">amount to take</param>
+    /// <returns></returns>
+    private bool withdraw(int decrease)
+    {
+        Debug.Log("Loans are illegal");
+        if (coins - decrease > 0)
+        {
+            coins -= decrease;
+        }
+
+        Debug.Log("You now have " + coins + " coins");
+        return coins - decrease > 0;
+    }
+
+    //Here's where the fun begins
+    public void upLead(int cost)
+    {
+        if (withdraw(cost))
+        {
+            Debug.Log("Increasing lead damage");
+            damageUpLead++;
+        }
+
+        else
+        {
+            Debug.Log("It smell like BROKE in here");
+        }
+    }
+
+    public void upHLead(int cost)
+    {
+        if (withdraw(cost))
+        {
+            Debug.Log("Increasing Hlead damage");
+            damageUpHLead++;
+        }
+
+        else
+        {
+            Debug.Log("It smell like BROKE in here");
+        }
+    }
+
+    public void upBLead(int cost)
+    {
+        if (withdraw(cost))
+        {
+            Debug.Log("Increasing Blead damage");
+            damageUpBLead++;
+        }
+
+        else
+        {
+            Debug.Log("It smell like BROKE in here");
+        }
     }
 }

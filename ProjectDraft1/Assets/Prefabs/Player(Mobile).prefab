@@ -2688,6 +2688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408f6a3db4851fc43b0ecf4dd29b2a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopTracker: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+    type: 3}
   HUD: {fileID: 7199647064917687208}
   SoundBoard: {fileID: 1049587208195984348}
 --- !u!1 &6603916337444536379

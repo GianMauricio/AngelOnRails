@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increase Damage: Costs 100'
+  m_text: 'Increase Damage: Costs 500'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3537,7 +3537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &460461959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7365,7 +7365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Increase Damage: Costs 100'
+  m_text: 'Increase Damage: Costs 200'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10012,7 +10012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1098916399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10105,6 +10105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6775fa82c6a6c264496d7221e4dece0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currCoins: {fileID: 525342094}
+  data: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c, type: 3}
 --- !u!1 &1104745132
 GameObject:
   m_ObjectHideFlags: 0
@@ -10416,7 +10418,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1138808971}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+          type: 3}
+        m_MethodName: upBLead
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 500
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1098916403}
+        m_MethodName: UIUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1138808971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12152,7 +12177,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1337393425}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+          type: 3}
+        m_MethodName: deposit
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1337393425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14628,7 +14665,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1586999955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+          type: 3}
+        m_MethodName: upLead
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1098916403}
+        m_MethodName: UIUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1586999955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18665,7 +18725,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2023752469}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+          type: 3}
+        m_MethodName: upHLead
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 200
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1098916403}
+        m_MethodName: UIUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2023752469
 MonoBehaviour:
   m_ObjectHideFlags: 0

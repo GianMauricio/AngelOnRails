@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public class WeaponTracker : MonoBehaviour
 {
+    //Data from shop stuff
+    public DataHolder shopTracker;
+
     //Manage UI
     public UIScript HUD;
     private string GunType = "Lead";
