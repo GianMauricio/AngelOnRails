@@ -10,15 +10,19 @@ public class EnemyLogic : MonoBehaviour
 
     private Vector3 DestPos;
     private float DistFrac = 0;
-    private static float SPEED = 0.03f;
 
     private bool hasDied = true;
 
     public int Rank;
+    private int worth;
 
-    public float health;
+    private float health;
     private float armor;
     private float shield;
+    private float speed;
+
+    //this is bad implementation. Too bad!
+    public DataHolder data;
 
     private enum EnemyState{
         Moving,
@@ -46,6 +50,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 20;
                     armor = 0;
                     shield = 0;
+
+                    worth = 10;
                 }
 
                 else if (transform.CompareTag("ArmoredEnemy"))
@@ -53,6 +59,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 20;
                     armor = 10;
                     shield = 0;
+
+                    worth = 20;
                 }
 
                 else if (transform.CompareTag("ShieldedEnemy"))
@@ -60,6 +68,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 20;
                     armor = 0;
                     shield = 20;
+
+                    worth = 25;
                 }
 
                 else if (transform.CompareTag("ProtectedEnemy"))
@@ -67,9 +77,17 @@ public class EnemyLogic : MonoBehaviour
                     health = 20;
                     armor = 10;
                     shield = 20;
+
+                    worth = 30;
                 }
 
-                else{Debug.Log("Self tage not recognized, self terminating to maintain integrity");}
+                else
+                {
+                    Debug.Log("Self tag not recognized, self terminating to maintain integrity");
+                    Destroy(this.gameObject);
+                }
+
+                speed = 0.1f;
                 break;
 
             case 2:
@@ -78,6 +96,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 50;
                     armor = 0;
                     shield = 0;
+
+                    worth = 10;
                 }
 
                 else if (transform.CompareTag("ArmoredEnemy"))
@@ -85,6 +105,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 50;
                     armor = 20;
                     shield = 0;
+
+                    worth = 20;
                 }
 
                 else if (transform.CompareTag("ShieldedEnemy"))
@@ -92,6 +114,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 50;
                     armor = 0;
                     shield = 30;
+
+                    worth = 25;
                 }
 
                 else if (transform.CompareTag("ProtectedEnemy"))
@@ -99,9 +123,16 @@ public class EnemyLogic : MonoBehaviour
                     health =50;
                     armor = 20;
                     shield = 30;
+
+                    worth = 30;
                 }
 
-                else { Debug.Log("Self tag not recognized, self terminating to maintain integrity"); }
+                else
+                {
+                    Debug.Log("Self tag not recognized, self terminating to maintain integrity");
+                    Destroy(this.gameObject);
+                }
+                speed = 0.2f;
                 break;
 
             case 3:
@@ -110,6 +141,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 80;
                     armor = 0;
                     shield = 0;
+
+                    worth = 10;
                 }
 
                 else if (transform.CompareTag("ArmoredEnemy"))
@@ -117,6 +150,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 80;
                     armor = 30;
                     shield = 0;
+
+                    worth = 20;
                 }
 
                 else if (transform.CompareTag("ShieldedEnemy"))
@@ -124,6 +159,8 @@ public class EnemyLogic : MonoBehaviour
                     health = 80;
                     armor = 0;
                     shield = 40;
+
+                    worth = 25;
                 }
 
                 else if (transform.CompareTag("ProtectedEnemy"))
@@ -131,9 +168,16 @@ public class EnemyLogic : MonoBehaviour
                     health = 80;
                     armor = 30;
                     shield = 40;
+
+                    worth = 30;
                 }
 
-                else { Debug.Log("Self tag not recognized, self terminating to maintain integrity"); }
+                else
+                {
+                    Debug.Log("Self tag not recognized, self terminating to maintain integrity");
+                    Destroy(this.gameObject);
+                }
+                speed = 0.3f;
                 break;
 
             default:
@@ -141,23 +185,31 @@ public class EnemyLogic : MonoBehaviour
                 Destroy(transform);
                 break;
         }
+
+        //Determine true worth by multiplying worth to rank
+        worth *= Rank;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (currState)
+        if (currState == EnemyState.Moving)
         {
-            case EnemyState.Moving:
-                if (DistFrac < 1)
-                {
-                    DistFrac += Time.deltaTime * SPEED;
-                    transform.position = Vector3.Lerp(transform.position, DestPos, DistFrac);
-                }
-                break;
+            if (DistFrac < 1)
+            {
+                DistFrac += Time.deltaTime * speed;
+                transform.position = Vector3.Lerp(transform.position, DestPos, DistFrac);
+            }
 
-            case EnemyState.Shooting:
-                break;
+            else
+            {
+                currState = EnemyState.Shooting;
+            }
+        }
+
+        else if (currState == EnemyState.Shooting)
+        {
+            Debug.Log("Enemy can now fire on player");
         }
     }
 
@@ -242,6 +294,7 @@ public class EnemyLogic : MonoBehaviour
 
             hasDied = true;
 
+            data.deposit(worth);
             return true;
         }
 

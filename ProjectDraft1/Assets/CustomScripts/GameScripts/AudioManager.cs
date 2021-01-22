@@ -20,25 +20,26 @@ public class AudioManager : MonoBehaviour
     /// <param name="mode">1 = Shoot, 2 = Reload</param>
     public void playSound(string type, int mode)
     {
+
         //Shooting sounds
         if (mode == 1)
         {
-            Debug.Log("Playing shootSound for: ");
+            //Debug.Log("Playing shootSound for: ");
             if (type == "Lead")
             {
-                Debug.Log("Lead");
+                //Debug.Log("Lead");
                 LeadShot.Play();
             }
 
             else if (type == "HLead")
             {
-                Debug.Log("HLead");
+                //Debug.Log("HLead");
                 HLeadShot.Play();
             }
 
             else if (type == "Blessed")
             {
-                Debug.Log("Blessed");
+                //Debug.Log("Blessed");
                 BlessedShot.Play();
             }
 
@@ -51,22 +52,22 @@ public class AudioManager : MonoBehaviour
         //Reload sounds
         else if (mode == 2)
         {
-            Debug.Log("Playing relSound for: ");
+            //Debug.Log("Playing relSound for: ");
             if (type == "Lead")
             {
-                Debug.Log("Lead");
+                //Debug.Log("Lead");
                 LeadRel.Play();
             }
 
             else if (type == "HLead")
             {
-                Debug.Log("HLead");
+                //Debug.Log("HLead");
                 HLeadRel.Play();
             }
 
             else if (type == "Blessed")
             {
-                Debug.Log("Blessed");
+                //Debug.Log("Blessed");
                 BlessedRel.Play();
             }
 

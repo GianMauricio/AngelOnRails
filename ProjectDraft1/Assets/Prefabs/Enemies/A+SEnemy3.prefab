@@ -889,10 +889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f034058463309f24c8c2b5809d814ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnLoc: {fileID: 0}
-  bangSound: {fileID: 0}
+  bangSound: {fileID: 1147965182916474471}
   Rank: 3
-  health: 0
+  data: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c, type: 3}
 --- !u!1 &6393150926351838406
 GameObject:
   m_ObjectHideFlags: 0

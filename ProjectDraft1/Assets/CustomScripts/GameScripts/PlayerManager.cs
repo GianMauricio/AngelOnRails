@@ -10,6 +10,7 @@ public  enum PlayerState
     Moving,
     Shooting,
     Crouched,
+    Done
 }
 
 public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
@@ -58,7 +59,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     private float MAXTIME = 1.0f; /*TODO:Make this not 1 second in final*/
 
     [Tooltip("Keep this really small or risk losing tap inputs")]
-    private float tapTimer = 0.001f;
+    private float tapTimer = 0.002f;
 
     // Start is called before the first frame update
     void Start()
@@ -103,19 +104,20 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
                 //Always check if there are enemies left
                 updateProgress();
+                //Debug.Log(WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining());
                 if (WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining() <= 0)
                 {
                     currState = PlayerState.Moving;
-                } 
-            
+                }
 
-            {
-                /*
                 //If tap/click is detected
                 if (Input.GetMouseButtonDown(0))
                 {
                     Shoot(Input.mousePosition);
                 }
+            {
+                /*
+                
 
                 //If rotation/R key is detected
                 else if (Input.GetKeyDown(KeyCode.R))
@@ -183,7 +185,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
                     float incomingDamage = WaveMaster.GetComponent<EnemyCommander>().allowShot();
                     bool isDead = Player.GetComponent<WeaponTracker>().takeDamage(incomingDamage);
 
-                    Debug.Log(incomingDamage);
+                    //Debug.Log(incomingDamage);
                     //Debug.Log(isDead);
                     timeExposed = 0f;
 
@@ -193,7 +195,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
                         SceneManager.UnloadSceneAsync("BetaLevel");
                     }
 
-                    else Debug.Log("Shot is non-fatal");
+                    //else Debug.Log("Shot is non-fatal");
                 }
 
                 break;
@@ -202,6 +204,10 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
             case PlayerState.Crouched: /*Will also revert to this state when not peeking*/
                 //TODO: Show Info UI
                 Debug.Log("Reverting timeExposed");
+                timeExposed = 0f; /*Reset enemy shot counters*/
+                break;
+
+            case PlayerState.Done:
                 timeExposed = 0f; /*Reset enemy shot counters*/
                 break;
 
@@ -265,10 +271,6 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     }
 
     //Called when the player gets banged
-    public void receiveBullet(float damageIncoming)
-    {
-        Player.GetComponent<WeaponTracker>().takeDamage(damageIncoming);
-    }
 
     //Function dedicated to making the UI not shit and cry
     private void updateProgress()
@@ -309,15 +311,13 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
 
             //TODO: Call UI script and end level
+
         }
     }
 
     //This shit happens when the player arrives at the waypoint
-    public void Arrived()
+    public void Arrived(WaypointType waypoint)
     {
-        //Spawn new enemy wave
-        WaveMaster.GetComponent<EnemyCommander>().DeployNextWave();
-
         //Set destination to next waypoint
         nWaypointNum++;
 
@@ -325,7 +325,17 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
         DistFrac = 0;
 
         //Set new state to shooting, if the waypoint is an actual waypoint
-        currState = PlayerState.Shooting;
+        if (waypoint == WaypointType.Waypoint)
+        {
+            //Spawn new enemy wave
+            Vector3 newOrientation = WaveMaster.GetComponent<EnemyCommander>().DeployNextWave();
+
+            //Make player look at new wave location
+            Camera.main.transform.LookAt(newOrientation);
+
+            //Debug.Log("Changing player state");
+            currState = PlayerState.Shooting;
+        }
 
         //Increment progress level
         Player.GetComponent<WeaponTracker>().addProgress(nWaypointNum, Waypoints.Count);

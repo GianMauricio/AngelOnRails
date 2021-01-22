@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WaypointType{ Waypoint, Transit }
+
 public class WaypointTrigger : MonoBehaviour
 {
     public GameObject PlayerDirector;
@@ -11,7 +13,20 @@ public class WaypointTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //Debug.Log("Player has entered waypoint");
-            PlayerDirector.GetComponent<PlayerManager>().Arrived();
+            if (gameObject.CompareTag("Waypoint"))
+            {
+                PlayerDirector.GetComponent<PlayerManager>().Arrived(WaypointType.Waypoint);
+            }
+
+            else if (gameObject.CompareTag("TransitPoint"))
+            {
+                PlayerDirector.GetComponent<PlayerManager>().Arrived(WaypointType.Transit);
+            }
+
+            else
+            {
+                Debug.Log("Where the fuck are you?");
+            }
         }
     }
 }

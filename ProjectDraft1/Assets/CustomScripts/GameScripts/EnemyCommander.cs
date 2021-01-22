@@ -62,14 +62,23 @@ public class EnemyCommander : MonoBehaviour
         return enemiesSpawned;
     }
 
-    public void DeployNextWave()
+    public Vector3 DeployNextWave()
     {
+        Vector3 targetOrientation = new Vector3(0,0,0);
+
         if (nCurrWave < Waves.Count)
         {
             //Activate requested wave
             Waves[nCurrWave].SetActive(true);
+
+            //Get the position of the spawn door and tell the player to look at it
+            Transform EnemyOrigin = Waves[nCurrWave].transform.GetChild(0);
+            targetOrientation = EnemyOrigin.position;
+
             nCurrWave++;
         }
+
+        return targetOrientation;
     }
 
     /// <summary>
@@ -79,7 +88,7 @@ public class EnemyCommander : MonoBehaviour
     /// </summary>
     public float allowShot()
     {
-        Debug.Log("Shot request received");
+        //Debug.Log("Shot request received");
         float shotDamage = 0;
 
         //This implementation is slow.

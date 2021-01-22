@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Unity.Notifications.Android;
 using UnityEngine.UI;
 
 /// <summary>
@@ -28,6 +29,12 @@ public class DataHolder : MonoBehaviour
 
     //Shop data
     private int coins, damageUpLead = 1, damageUpHLead = 1, damageUpBLead = 1;
+
+    //Keep an eye on this; it may cause issues since the scene it's in is always awake
+    private void Awake()
+    {
+        NotifChannel();
+    }
 
     //Set functions
     public void setMusicVol(float level)
@@ -128,7 +135,7 @@ public class DataHolder : MonoBehaviour
     /// <param name="increase">amount to add</param>
     public void deposit(int increase)
     {
-        Debug.Log("You now have " + coins + " coins");
+        //Debug.Log("You now have " + coins + " coins");
         coins += increase;
     }
 
@@ -139,13 +146,13 @@ public class DataHolder : MonoBehaviour
     /// <returns></returns>
     private bool withdraw(int decrease)
     {
-        Debug.Log("Loans are illegal");
+        //Debug.Log("Loans are illegal");
         if (coins - decrease > 0)
         {
             coins -= decrease;
         }
 
-        Debug.Log("You now have " + coins + " coins");
+        //Debug.Log("You now have " + coins + " coins");
         return coins - decrease > 0;
     }
 
@@ -190,5 +197,52 @@ public class DataHolder : MonoBehaviour
         {
             Debug.Log("It smell like BROKE in here");
         }
+    }
+
+    //Notification stuff
+    public void NotifChannel()
+    {
+        //Channel init data
+        string ChID = "MainNotifs";
+        string title = "Angel On Rails";
+        Importance importance = Importance.Default;
+        string desc = "Send out AOR notifs";
+
+        //Notif panel struct
+        AndroidNotificationChannel ch = new AndroidNotificationChannel(ChID, title, desc, importance);
+
+        //Registry entry
+        AndroidNotificationCenter.RegisterNotificationChannel(ch);
+    }
+
+    //Send current coin count
+    public void SendScoreNotif()
+    {
+        //Data
+        string header = "Current Coins:";
+        string msg = coins.ToString();
+
+        //Timeline
+        System.DateTime deployNotifTime = System.DateTime.Now.AddSeconds(2);
+
+        //Notif go pewpew
+        AndroidNotification newNotif = new AndroidNotification(header, msg, deployNotifTime);
+
+        //Prev Score data
+        newNotif.IntentData = coins.ToString();
+
+        //TODO:Gura Icon stuff
+        newNotif.SmallIcon = "gura";
+        newNotif.LargeIcon = "guralarge";
+
+        AndroidNotificationCenter.SendNotification(newNotif, "MainNotifs");
+    }
+
+    /// <summary>
+    /// make this do stuff
+    /// </summary>
+    public void parseData()
+    {
+
     }
 }

@@ -290,4 +290,10 @@ public class WeaponTracker : MonoBehaviour
                 break;
         }
     }
+
+    //End level
+    public void endLevel()
+    {
+
+    }
 }
