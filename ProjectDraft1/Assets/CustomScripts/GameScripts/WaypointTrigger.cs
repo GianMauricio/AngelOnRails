@@ -23,9 +23,10 @@ public class WaypointTrigger : MonoBehaviour
                 PlayerDirector.GetComponent<PlayerManager>().Arrived(WaypointType.Transit);
             }
 
-            else
+            else if(gameObject.CompareTag("ExitPoint"))
             {
                 Debug.Log("Where the fuck are you?");
+                PlayerDirector.GetComponent<PlayerManager>().EndLevel();
             }
         }
     }

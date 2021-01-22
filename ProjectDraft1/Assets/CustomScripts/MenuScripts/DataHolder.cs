@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Unity.Notifications.Android;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This script holds the data to be used by all scenes in the game.
@@ -18,6 +19,10 @@ public class DataHolder : MonoBehaviour
     private static float DEFAULT_BRIGHTNESS = 60;
     private static float MAX_DB = 18.0f;
     private float n_MusicVolume = 0.5f, n_SFXVolume = 0.5f, n_Brightness = 60;
+
+    //UI
+    public GameObject LevelDoneUI;
+    private int LevelBeingPlayed;
 
     [Header("Audio")] 
     public AudioMixer Music;
@@ -40,7 +45,7 @@ public class DataHolder : MonoBehaviour
     public void setMusicVol(float level)
     {
         n_MusicVolume = level;
-        Debug.Log("New music volume " + n_MusicVolume);
+        //Debug.Log("New music volume " + n_MusicVolume);
 
         Music.SetFloat("MusicVol", Mathf.Log10(n_MusicVolume) * MAX_DB);
     }
@@ -48,7 +53,7 @@ public class DataHolder : MonoBehaviour
     public void setSFXVol(float level)
     {
         n_SFXVolume = level;
-        Debug.Log("New SFX volume " + n_SFXVolume);
+        //Debug.Log("New SFX volume " + n_SFXVolume);
 
         SFX.SetFloat("GunVol", Mathf.Log10(n_SFXVolume) * MAX_DB);
     }
@@ -57,12 +62,6 @@ public class DataHolder : MonoBehaviour
     {
         n_Brightness = level;
         Debug.Log("New brightness level " + n_Brightness);
-    }
-
-    public void completeLevel(int levelDesignation)
-    {
-        //Set requested level to completed
-        levelsCompleted[levelDesignation] = true;
     }
 
     public void resetProgress()
@@ -244,5 +243,22 @@ public class DataHolder : MonoBehaviour
     public void parseData()
     {
 
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadSceneAsync(0, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(LevelBeingPlayed);
+    }
+
+    //Go to next level
+    public void invokeLevelEndUI(int level, bool isDone)
+    {
+        LevelDoneUI.SetActive(true);
+        LevelBeingPlayed = level;
+        if (isDone)
+        {
+            levelsCompleted[level] = true;
+        }
     }
 }

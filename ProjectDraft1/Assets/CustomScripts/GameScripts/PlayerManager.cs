@@ -3,18 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
-public  enum PlayerState
+public enum PlayerState
 {
     Moving,
     Shooting,
     Crouched,
-    Done
+    Done,
+    Dead
 }
 
 public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 {
+    //Data
+    public DataHolder data;
+    public int Level;
+
     //Statics
     private static float moveSpeed = 0.05f;
 
@@ -191,8 +196,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
                     if (isDead)
                     {
-                        SceneManager.LoadScene("MenuSceneActive", LoadSceneMode.Additive);
-                        SceneManager.UnloadSceneAsync("BetaLevel");
+                        data.invokeLevelEndUI(Level, false);
                     }
 
                     //else Debug.Log("Shot is non-fatal");
@@ -286,7 +290,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     }
 
     //This controls the level progression
-    void progressCheck()
+    public void progressCheck()
     {
         //If the player is not at the starting waypoint
         if (nWaypointNum == 0){
@@ -296,23 +300,18 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
         }
 
         //If the player is done with the starting waypoint, but not at the exit waypoint yet
-        else if (nWaypointNum < Waypoints.Count - 1)
+        else if (nWaypointNum < Waypoints.Count)
         {
             CurrPos = Player.GetComponent<Transform>().position;
             DestPos = Waypoints[nWaypointNum].GetComponent<Transform>().position;
 
         }
+    }
 
-        //If the next waypoint is the exit
-        else if (nWaypointNum == Waypoints.Count)
-        {
-            CurrPos = Player.GetComponent<Transform>().position;
-            DestPos = Waypoints[nWaypointNum].GetComponent<Transform>().position;
-
-
-            //TODO: Call UI script and end level
-
-        }
+    public void EndLevel()
+    {
+        Debug.Log("Arrived at exit");
+        data.invokeLevelEndUI(Level, true);
     }
 
     //This shit happens when the player arrives at the waypoint

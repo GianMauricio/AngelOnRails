@@ -16,6 +16,7 @@ TagManager:
   - ShieldedEnemy
   - ProtectedEnemy
   - UIObject
+  - ExitPoint
   layers:
   - Default
   - TransparentFX

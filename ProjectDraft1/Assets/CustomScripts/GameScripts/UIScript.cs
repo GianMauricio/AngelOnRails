@@ -8,6 +8,7 @@ public class UIScript : MonoBehaviour
 {
     //Track UI elements
     public Image healthBar, ammoBar, enemyBar, levelBar, hurtUI;
+    public GameObject levelCompleteUI;
 
     //Track maximums
     private float MAXHEALTH = 100;

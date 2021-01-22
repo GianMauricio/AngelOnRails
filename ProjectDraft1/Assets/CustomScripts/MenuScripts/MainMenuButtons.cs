@@ -26,8 +26,8 @@ public class MainMenuButtons : MonoBehaviour
 
     public void play()
     {
-        SceneManager.LoadScene("BetaLevel", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("MenuSceneActive");
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(0);
     }
 
     public void toLastLevel()

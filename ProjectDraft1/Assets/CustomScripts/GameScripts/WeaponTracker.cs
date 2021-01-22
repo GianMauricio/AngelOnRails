@@ -20,7 +20,7 @@ public class WeaponTracker : MonoBehaviour
 
     //health data
     private float MAXHEALTH = 100f;
-    private float health = 100;
+    private float health = 1000;
     
     //Ammunition data
     private int MAXLEAD = 100, MAXHLEAD = 50, MAXBLESS = 20;
@@ -289,11 +289,5 @@ public class WeaponTracker : MonoBehaviour
                 Debug.Log("No such audio exists");
                 break;
         }
-    }
-
-    //End level
-    public void endLevel()
-    {
-
     }
 }
