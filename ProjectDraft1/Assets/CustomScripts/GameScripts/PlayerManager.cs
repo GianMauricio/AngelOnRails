@@ -274,8 +274,6 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
         }
     }
 
-    //Called when the player gets banged
-
     //Function dedicated to making the UI not shit and cry
     private void updateProgress()
     {
