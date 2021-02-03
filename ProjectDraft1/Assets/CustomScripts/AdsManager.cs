@@ -65,7 +65,17 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             }
         }
     }
-
+    public void ShowInterstitialAd()
+    {
+        if (Advertisement.IsReady(adInterstitial))
+        {
+            Advertisement.Show(adInterstitial);
+        }
+        else
+        {
+            Debug.Log("No Ads!");
+        }
+    }
     public void StartBanner()
     {
         ShowBannerAd(); /*may not start sometimes, attempt to move this somewhere else...?*/ //TODO:DONE
