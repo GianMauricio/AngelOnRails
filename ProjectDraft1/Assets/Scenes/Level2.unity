@@ -19411,7 +19411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117297477}
   m_Layer: 0
-  m_Name: Level1
+  m_Name: DirectorAndWaypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
