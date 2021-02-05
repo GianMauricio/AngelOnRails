@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// The main idea of the Weapon tracker script is actually just used to communicate data from the level to the player scripts
@@ -18,12 +16,13 @@ public class WeaponTracker : MonoBehaviour
     //health data
     private float MAXHEALTH = 100f;
     private float health = 1000;
-    
+
     //Ammunition data
     private int MAXLEAD = 100, MAXHLEAD = 50, MAXBLESS = 20;
     private int leadAmmo = 100, heavyAmmo = 50, blessedAmmo = 20;
     private int leadClips = 3, heavyClips = 2, blessedClips = 1;
 
+    
     //Switch gun to selected type
     public void setLead()
     {
@@ -136,6 +135,7 @@ public class WeaponTracker : MonoBehaviour
         {
             damage = 20;
         }
+
         return damage;
 
     }
@@ -291,6 +291,8 @@ public class WeaponTracker : MonoBehaviour
     public void invokeLevelEndUI(int level, bool finished)
     {
         Debug.Log(level + " Done" + finished);
-
+        HUD.show();
+        HUD.finishLevel(level, finished);
     }
+
 }

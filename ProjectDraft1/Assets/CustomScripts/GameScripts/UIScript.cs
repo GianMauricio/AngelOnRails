@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //This script does nothing on it's own until ordered by player scripts
@@ -9,9 +8,14 @@ public class UIScript : MonoBehaviour
     //Track UI elements
     public Image healthBar, ammoBar, enemyBar, levelBar, hurtUI;
     public GameObject levelCompleteUI;
+    public GameObject diedUI;
+    public GameObject activeUI;
 
     //Track maximums
     private float MAXHEALTH = 100;
+
+    //Temp data
+    private int currLevel = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -49,13 +53,55 @@ public class UIScript : MonoBehaviour
         levelBar.fillAmount = waypointsRemaining / waypointsTotal;
     }
 
+    public void finishLevel(int levelCompleted, bool isDone)
+    {
+        Debug.Log("Finishing level");
+
+        activeUI.SetActive(false);
+
+        if (isDone)
+        {
+            levelCompleteUI.SetActive(true);
+        }
+
+        else
+        {
+            diedUI.SetActive(true);
+        }
+        
+        DataHolder.levelsCompleted[levelCompleted] = isDone;
+        currLevel = levelCompleted;
+    }
+
     public void hide()
     {
+        //Debug.Log("Hiding");
         gameObject.SetActive(false);
     }
 
     public void show()
     {
         gameObject.SetActive(true);
+    }
+
+    public void toMenu()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(currLevel);
+    }
+
+    public void toNext()
+    {
+        if (currLevel == 3)
+        {
+            SceneManager.LoadScene(0, LoadSceneMode.Additive);
+        }
+
+        else
+        {
+            SceneManager.LoadScene((currLevel + 1), LoadSceneMode.Additive);
+        }
+
+        SceneManager.UnloadSceneAsync(currLevel);
     }
 }

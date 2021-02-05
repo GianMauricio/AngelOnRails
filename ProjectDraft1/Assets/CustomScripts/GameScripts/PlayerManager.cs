@@ -93,7 +93,6 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
         {
             //If the player is in transit
             case PlayerState.Moving:
-                Player.GetComponent<WeaponTracker>().shiftState(true);
                 //Move player until at next waypoint
                 if (DistFrac < 1)
                 {
@@ -104,9 +103,6 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
             //If the player is in danger
             case PlayerState.Shooting:
-                //Show shooting UI
-                Player.GetComponent<WeaponTracker>().shiftState(false);
-
                 //Always check if there are enemies left
                 updateProgress();
                 //Debug.Log(WaveMaster.GetComponent<EnemyCommander>().enemiesRemaining());
@@ -310,6 +306,8 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     {
         Debug.Log("Arrived at exit");
         Player.GetComponent<WeaponTracker>().invokeLevelEndUI(Level, true);
+        Player.GetComponent<WeaponTracker>().shiftState(false);
+        currState = PlayerState.Done;
     }
 
     //This shit happens when the player arrives at the waypoint
@@ -332,10 +330,16 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
             //Debug.Log("Changing player state");
             currState = PlayerState.Shooting;
+            Player.GetComponent<WeaponTracker>().shiftState(false);
         }
 
         //Increment progress level
         Player.GetComponent<WeaponTracker>().addProgress(nWaypointNum, Waypoints.Count);
+    }
+
+    public void Left()
+    {
+        Player.GetComponent<WeaponTracker>().shiftState(true);
     }
 
     //Touch functions

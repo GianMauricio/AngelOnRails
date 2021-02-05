@@ -15,6 +15,6 @@ public class ShopButtons : MonoBehaviour
 
     public void UIUpdate()
     {
-        currCoins.text = data.getCoins().ToString();
+        currCoins.text = DataHolder.getCoins().ToString();
     }
 }

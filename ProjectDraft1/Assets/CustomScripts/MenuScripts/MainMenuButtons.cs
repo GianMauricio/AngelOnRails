@@ -35,7 +35,7 @@ public class MainMenuButtons : MonoBehaviour
         //Depending on which level was last accessed; the player will resume at that level
         //(but all progress within the level will reset)
 
-        switch (mDataHolder.queryLast())
+        switch (DataHolder.LevelBeingPlayed)
         {
             default:
                 //Reload menu scene if the last level was not found
