@@ -37,14 +37,14 @@ public class DataHolder : MonoBehaviour
     private int coins, damageUpLead = 1, damageUpHLead = 1, damageUpBLead = 1;
 
     //Ad manager
-    public AdsManager adManager;
+    //public AdsManager adManager;
 
     //Keep an eye on this; it may cause issues since the scene it's in is always awake
     private void Awake()
     {
         NotifChannel();
 
-        adManager.OnAdDone += AdManager_OnAdDone;
+      //  adManager.OnAdDone += AdManager_OnAdDone;
     }
 
     //Set functions
