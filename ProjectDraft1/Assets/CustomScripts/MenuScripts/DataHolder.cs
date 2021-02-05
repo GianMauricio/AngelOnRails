@@ -40,16 +40,17 @@ public class DataHolder : MonoBehaviour
     //Ad manager
     public AdsManager adManager;
 
-    //public event EventHandler<AdFinishEventArgs> OnAdDone;
+   
 
 
     //Keep an eye on this; it may cause issues since the scene it's in is always awake
     private void Awake()
     {
-       // Debug.Log(coins);
-        NotifChannel();
        
-      //  adManager.OnAdDone += AdManager_OnAdDone;
+        NotifChannel();
+
+        adManager.OnAdDone += DataHolder_OnAdDone;
+         Debug.Log("Woke up");
     }
 
     //Set functions
@@ -289,6 +290,8 @@ public class DataHolder : MonoBehaviour
                     Debug.Log("Betrayal!! ; A;");
                     break;
                 case ShowResult.Finished:
+                    deposit(120);
+                    Debug.Log(coins);
                     Debug.Log("Ad is finished completed");
                     
                     break;

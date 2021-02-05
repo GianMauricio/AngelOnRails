@@ -43,7 +43,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
         Advertisement.AddListener(this);
         //ShowBannerAd();
-       adManager.OnAdDone += AdsManager_OnAdDone;
+       //adManager.OnAdDone += AdsManager_OnAdDone;
 
     }
     
@@ -61,7 +61,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
                     Debug.Log("Betrayal!! ; A;");
                     break;
                 case ShowResult.Finished:
-                    data.deposit(120);
+                   
                     Debug.Log("Ad completed Ad manager");
                    
                   
