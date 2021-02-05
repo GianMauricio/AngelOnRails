@@ -41,7 +41,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         Advertisement.Initialize(GameID, true);
 
         Advertisement.AddListener(this);
+        ShowBannerAd();
         adManager.OnAdDone += AdsManager_OnAdDone;
+
     }
 
     private void AdsManager_OnAdDone(object sender, AdFinishEventArgs e)
@@ -106,7 +108,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         }
 
         //Set position
-        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+        Advertisement.Banner.SetPosition(BannerPosition.TOP_LEFT);
 
         //Show ad
         Advertisement.Banner.Show(adBanner);

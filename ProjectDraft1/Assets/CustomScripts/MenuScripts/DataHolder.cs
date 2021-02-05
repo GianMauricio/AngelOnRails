@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using Unity.Notifications.Android;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 /// <summary>
 /// This script holds the data to be used by all scenes in the game.
@@ -18,7 +19,7 @@ public class DataHolder : MonoBehaviour
     private static float DEFAULT_SFXVOL = 0.5f;
     private static float DEFAULT_BRIGHTNESS = 60;
     private static float MAX_DB = 18.0f;
-    private float n_MusicVolume = 0.5f, n_SFXVolume = 0.5f, n_Brightness = 60;
+    private float n_MusicVolume = 0.25f, n_SFXVolume = 0.25f, n_Brightness = 60;
 
     //UI
     public GameObject LevelDoneUI;
@@ -35,10 +36,15 @@ public class DataHolder : MonoBehaviour
     //Shop data
     private int coins, damageUpLead = 1, damageUpHLead = 1, damageUpBLead = 1;
 
+    //Ad manager
+    public AdsManager adManager;
+
     //Keep an eye on this; it may cause issues since the scene it's in is always awake
     private void Awake()
     {
         NotifChannel();
+
+        adManager.OnAdDone += AdManager_OnAdDone;
     }
 
     //Set functions
@@ -259,6 +265,25 @@ public class DataHolder : MonoBehaviour
         if (isDone)
         {
             levelsCompleted[level] = true;
+        }
+    }
+
+    //Added the admanager adding currency when ad is done
+    private void AdManager_OnAdDone(object sender, AdFinishEventArgs e)
+    {
+        if(e.PlacementID == AdsManager.adRewarded)
+        {
+            switch (e.AdShowResult)
+            {
+                case ShowResult.Failed:
+                    Debug.Log("Ad failed to show");
+                    break;
+                case ShowResult.Skipped:
+                    Debug.Log("Betrayal!! ; A;");
+                    break;
+                case ShowResult.Finished:
+                    Debug.Log("Ad completed"); coins += 100 ;break;
+            }
         }
     }
 }
