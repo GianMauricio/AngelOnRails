@@ -20,11 +20,11 @@ public class DataHolder : MonoBehaviour
     private static float DEFAULT_SFXVOL = 0.5f;
     private static float DEFAULT_BRIGHTNESS = 60;
     private static float MAX_DB = 18.0f;
-    private float n_MusicVolume = 0.1f, n_SFXVolume = 0.1f, n_Brightness = 60;
+    public static float n_MusicVolume = 0.1f, n_SFXVolume = 0.1f, n_Brightness = 60;
 
     [Header("Audio")] 
-    public AudioMixer Music;
-    public AudioMixer SFX;
+    public static AudioMixer Music;
+    public static AudioMixer SFX;
 
     //Ad manager
     public AdsManager adManager;
@@ -54,7 +54,7 @@ public class DataHolder : MonoBehaviour
 
 
     //Set functions
-    public void setMusicVol(float level)
+    public static void setMusicVol(float level)
     {
         n_MusicVolume = level;
         //Debug.Log("New music volume " + n_MusicVolume);
@@ -62,7 +62,7 @@ public class DataHolder : MonoBehaviour
         Music.SetFloat("MusicVol", Mathf.Log10(n_MusicVolume) * MAX_DB);
     }
 
-    public void setSFXVol(float level)
+    public static void setSFXVol(float level)
     {
         n_SFXVolume = level;
         //Debug.Log("New SFX volume " + n_SFXVolume);
@@ -70,13 +70,13 @@ public class DataHolder : MonoBehaviour
         SFX.SetFloat("GunVol", Mathf.Log10(n_SFXVolume) * MAX_DB);
     }
 
-    public void setBright(float level)
+    public static void setBright(float level)
     {
         n_Brightness = level;
         Debug.Log("New brightness level " + n_Brightness);
     }
 
-    public void resetProgress()
+    public static void resetProgress()
     {
         //Set all levels to uncompleted
         for (int i = 0; i < levelsCompleted.Length; i++)
@@ -87,17 +87,17 @@ public class DataHolder : MonoBehaviour
         //TODO:Reset shop upgrades
     }
 
-    public int getLeadRank()
+    public static int getLeadRank()
     {
         return damageUpLead;
     }
 
-    public int getHLeadRank()
+    public static int getHLeadRank()
     {
         return damageUpHLead;
     }
 
-    public int getBLeadRank()
+    public static int getBLeadRank()
     {
         return damageUpBLead;
     }
@@ -146,7 +146,7 @@ public class DataHolder : MonoBehaviour
     /// </summary>
     /// <param name="decrease">amount to take</param>
     /// <returns></returns>
-    private bool withdraw(int decrease)
+    private static bool withdraw(int decrease)
     {
         //Debug.Log("Loans are illegal");
         if (coins - decrease > 0)
