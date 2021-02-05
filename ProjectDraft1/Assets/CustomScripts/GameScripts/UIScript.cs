@@ -94,14 +94,13 @@ public class UIScript : MonoBehaviour
     {
         if (currLevel == 3)
         {
-            SceneManager.LoadScene(0, LoadSceneMode.Additive);
+            SceneManager.LoadScene(0);
         }
 
         else
         {
-            SceneManager.LoadScene((currLevel + 1), LoadSceneMode.Additive);
+            SceneManager.LoadScene((currLevel + 1));
         }
 
-        SceneManager.UnloadSceneAsync(currLevel);
     }
 }
