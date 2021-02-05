@@ -21,8 +21,6 @@ public class EnemyLogic : MonoBehaviour
     private float shield;
     private float speed;
 
-    //this is bad implementation. Too bad!
-    public DataHolder data;
 
     private enum EnemyState{
         Moving,
@@ -209,7 +207,7 @@ public class EnemyLogic : MonoBehaviour
 
         else if (currState == EnemyState.Shooting)
         {
-            Debug.Log("Enemy can now fire on player");
+           //Debug.Log("Enemy can now fire on player");
         }
     }
 
@@ -294,7 +292,7 @@ public class EnemyLogic : MonoBehaviour
 
             hasDied = true;
 
-            data.deposit(worth);
+            DataHolder.deposit(worth);
             return true;
         }
 

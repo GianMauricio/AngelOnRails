@@ -22,35 +22,34 @@ public class DataHolder : MonoBehaviour
     private static float MAX_DB = 18.0f;
     private float n_MusicVolume = 0.1f, n_SFXVolume = 0.1f, n_Brightness = 60;
 
-    //UI
-    public GameObject LevelDoneUI;
-    private int LevelBeingPlayed;
-
     [Header("Audio")] 
     public AudioMixer Music;
     public AudioMixer SFX;
 
-    //Level data
-    private bool[] levelsCompleted = new bool[10];
-    private int lastlevel = 1;
-
-    //Shop data
-    private int coins, damageUpLead = 1, damageUpHLead = 1, damageUpBLead = 1;
-
     //Ad manager
     public AdsManager adManager;
 
-   
+
+    /// <summary>
+    /// Statics that will persists throughout the game
+    /// </summary>
+    //Level data
+    public static bool[] levelsCompleted = new bool[10];
+    public static int LevelBeingPlayed;
+
+    //Shop data
+    private static int coins, damageUpLead = 1, damageUpHLead = 1, damageUpBLead = 1;
 
 
     //Keep an eye on this; it may cause issues since the scene it's in is always awake
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         coins = 0;
         NotifChannel();
 
         adManager.OnAdDone += DataHolder_OnAdDone;
-         Debug.Log("Woke up");
+        Debug.Log("Woke up");
     }
 
 
@@ -88,22 +87,6 @@ public class DataHolder : MonoBehaviour
         //TODO:Reset shop upgrades
     }
 
-    public void setLastLevel(int level)
-    {
-        lastlevel = level;
-    }
-
-    //Get functions
-    public bool queryLevel(int requestLevel)
-    {
-        return levelsCompleted[requestLevel];
-    }
-
-    public int queryLast()
-    {
-        return lastlevel;
-    }
-
     public int getLeadRank()
     {
         return damageUpLead;
@@ -119,7 +102,7 @@ public class DataHolder : MonoBehaviour
         return damageUpBLead;
     }
 
-    public int getCoins()
+    public static int getCoins()
     {
         //coins = 0;
         Debug.Log(coins);
@@ -152,7 +135,7 @@ public class DataHolder : MonoBehaviour
     /// Add coins to player
     /// </summary>
     /// <param name="increase">amount to add</param>
-    public void deposit(int increase)
+    public static void deposit(int increase)
     {
         //Debug.Log("You now have " + coins + " coins");
         coins += increase;
@@ -265,23 +248,6 @@ public class DataHolder : MonoBehaviour
 
     }
 
-    public void ReturnToMenu()
-    {
-        SceneManager.LoadSceneAsync(0, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(LevelBeingPlayed);
-    }
-
-    //Go to next level
-    public void invokeLevelEndUI(int level, bool isDone)
-    {
-        LevelDoneUI.SetActive(true);
-        LevelBeingPlayed = level;
-        if (isDone)
-        {
-            levelsCompleted[level] = true;
-        }
-    }
-
     //Added the admanager adding currency when ad is done
     private void DataHolder_OnAdDone(object sender, AdFinishEventArgs e)
     {
@@ -297,7 +263,6 @@ public class DataHolder : MonoBehaviour
                     break;
                 case ShowResult.Finished:
                     deposit(120);
-                   
                     Debug.Log("Ad is finished completed");
                     
                     break;

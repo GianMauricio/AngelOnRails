@@ -196,7 +196,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
                     if (isDead)
                     {
-                        data.invokeLevelEndUI(Level, false);
+                        Player.GetComponent<WeaponTracker>().invokeLevelEndUI(Level, false);
                     }
 
                     //else Debug.Log("Shot is non-fatal");
@@ -309,7 +309,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
     public void EndLevel()
     {
         Debug.Log("Arrived at exit");
-        data.invokeLevelEndUI(Level, true);
+        Player.GetComponent<WeaponTracker>().invokeLevelEndUI(Level, true);
     }
 
     //This shit happens when the player arrives at the waypoint

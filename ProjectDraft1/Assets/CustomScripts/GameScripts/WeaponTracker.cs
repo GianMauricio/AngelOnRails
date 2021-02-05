@@ -8,9 +8,6 @@ using UnityEngine;
 /// </summary>
 public class WeaponTracker : MonoBehaviour
 {
-    //Data from shop stuff
-    public DataHolder shopTracker;
-
     //Manage UI
     public UIScript HUD;
     private string GunType = "Lead";
@@ -289,5 +286,11 @@ public class WeaponTracker : MonoBehaviour
                 Debug.Log("No such audio exists");
                 break;
         }
+    }
+
+    public void invokeLevelEndUI(int level, bool finished)
+    {
+        Debug.Log(level + " Done" + finished);
+
     }
 }
