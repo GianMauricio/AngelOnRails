@@ -122,6 +122,8 @@ public class DataHolder : MonoBehaviour
     {
         //coins = 0;
         Debug.Log(coins);
+        //deposit(10); testing if deposit works it does 
+
         return coins;
     }
 
@@ -291,11 +293,13 @@ public class DataHolder : MonoBehaviour
                     break;
                 case ShowResult.Finished:
                     deposit(120);
-                    Debug.Log(coins);
+                   
                     Debug.Log("Ad is finished completed");
                     
                     break;
             }
         }
+        Debug.Log("Dataholder ad done " + coins);
+       
     }
 }
