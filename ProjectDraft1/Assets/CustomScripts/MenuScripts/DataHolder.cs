@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -19,7 +20,7 @@ public class DataHolder : MonoBehaviour
     private static float DEFAULT_SFXVOL = 0.5f;
     private static float DEFAULT_BRIGHTNESS = 60;
     private static float MAX_DB = 18.0f;
-    private float n_MusicVolume = 0.25f, n_SFXVolume = 0.25f, n_Brightness = 60;
+    private float n_MusicVolume = 0.1f, n_SFXVolume = 0.1f, n_Brightness = 60;
 
     //UI
     public GameObject LevelDoneUI;
@@ -37,13 +38,17 @@ public class DataHolder : MonoBehaviour
     private int coins, damageUpLead = 1, damageUpHLead = 1, damageUpBLead = 1;
 
     //Ad manager
-    //public AdsManager adManager;
+    public AdsManager adManager;
+
+    //public event EventHandler<AdFinishEventArgs> OnAdDone;
+
 
     //Keep an eye on this; it may cause issues since the scene it's in is always awake
     private void Awake()
     {
+       // Debug.Log(coins);
         NotifChannel();
-
+       
       //  adManager.OnAdDone += AdManager_OnAdDone;
     }
 
@@ -114,6 +119,8 @@ public class DataHolder : MonoBehaviour
 
     public int getCoins()
     {
+        //coins = 0;
+        Debug.Log(coins);
         return coins;
     }
 
@@ -269,7 +276,7 @@ public class DataHolder : MonoBehaviour
     }
 
     //Added the admanager adding currency when ad is done
-    private void AdManager_OnAdDone(object sender, AdFinishEventArgs e)
+    private void DataHolder_OnAdDone(object sender, AdFinishEventArgs e)
     {
         if(e.PlacementID == AdsManager.adRewarded)
         {
@@ -282,7 +289,9 @@ public class DataHolder : MonoBehaviour
                     Debug.Log("Betrayal!! ; A;");
                     break;
                 case ShowResult.Finished:
-                    Debug.Log("Ad completed"); coins += 100 ;break;
+                    Debug.Log("Ad is finished completed");
+                    
+                    break;
             }
         }
     }

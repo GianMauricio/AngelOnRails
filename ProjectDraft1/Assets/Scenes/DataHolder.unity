@@ -128,6 +128,104 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4609241186038758894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1333311594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4609241186038758894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b41ddb42e760545a262c1ae8f37f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1948949373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 889095011638381486, guid: 9c90d87e60a41e64688bd579c2635d92,
+    type: 3}
+  m_PrefabInstance: {fileID: 889095010768490707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1649c8b6174e84c43a19bbaf18c466dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &889095010768490707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1276.5164
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 707.70013
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -36.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381485, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 889095011638381486, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 1333311594}
+    - target: {fileID: 889095011638381487, guid: 9c90d87e60a41e64688bd579c2635d92,
+        type: 3}
+      propertyPath: m_Name
+      value: Admanager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c90d87e60a41e64688bd579c2635d92, type: 3}
 --- !u!1001 &4609241186038758894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147,6 +245,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: dbfd996a23286ab4a8d5e9380539c321,
         type: 2}
+    - target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
+        type: 3}
+      propertyPath: adManager
+      value: 
+      objectReference: {fileID: 1948949373}
     - target: {fileID: 4609241185865478484, guid: 3cd0b85884853fd4bbe48ec16e77fb7c,
         type: 3}
       propertyPath: LevelDoneUI

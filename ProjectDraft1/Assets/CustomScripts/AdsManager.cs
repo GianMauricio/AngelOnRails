@@ -17,8 +17,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     //Reference to self...?
     public AdsManager adManager;
+    public DataHolder data;
 
-    //Reference to the FB manager
+    
    
 
     public string GameID
@@ -41,11 +42,11 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         Advertisement.Initialize(GameID, true);
 
         Advertisement.AddListener(this);
-        ShowBannerAd();
-        adManager.OnAdDone += AdsManager_OnAdDone;
+        //ShowBannerAd();
+       adManager.OnAdDone += AdsManager_OnAdDone;
 
     }
-
+    
     private void AdsManager_OnAdDone(object sender, AdFinishEventArgs e)
     {
         //Check if the fully finished
@@ -60,8 +61,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
                     Debug.Log("Betrayal!! ; A;");
                     break;
                 case ShowResult.Finished:
-                    Debug.Log("Ad completed");
-
+                    data.deposit(120);
+                    Debug.Log("Ad completed Ad manager");
+                   
                   
                     break;
             }
