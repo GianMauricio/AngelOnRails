@@ -86,8 +86,7 @@ public class UIScript : MonoBehaviour
 
     public void toMenu()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(currLevel);
+        SceneManager.LoadScene(0);
     }
 
     public void toNext()

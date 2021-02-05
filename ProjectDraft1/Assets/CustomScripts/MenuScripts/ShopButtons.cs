@@ -11,7 +11,11 @@ using UnityEngine;
 public class ShopButtons : MonoBehaviour
 {
     public TextMeshProUGUI currCoins;
-    public DataHolder data;
+
+    public void Start()
+    {
+        UIUpdate();
+    }
 
     public void UIUpdate()
     {

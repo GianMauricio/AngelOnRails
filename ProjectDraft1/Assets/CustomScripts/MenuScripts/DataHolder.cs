@@ -104,13 +104,6 @@ public class DataHolder : MonoBehaviour
 
     public static int getCoins()
     {
-        //coins = 0;
-        Debug.Log(coins);
-        deposit(10); //testing if deposit works it does 
-                     //addendum it seems like whats happening is that dataholder is coming from different areas
-                     //DataHolder of shop is different from data holder of show rewarded ad
-                     //Data is persistent between play sessions
-
         return coins;
     }
 
@@ -146,7 +139,7 @@ public class DataHolder : MonoBehaviour
     /// </summary>
     /// <param name="decrease">amount to take</param>
     /// <returns></returns>
-    private static bool withdraw(int decrease)
+    public static bool withdraw(int decrease)
     {
         //Debug.Log("Loans are illegal");
         if (coins - decrease > 0)
@@ -159,7 +152,7 @@ public class DataHolder : MonoBehaviour
     }
 
     //Here's where the fun begins
-    public void upLead(int cost)
+    public static void upLead(int cost)
     {
         if (withdraw(cost))
         {
@@ -173,7 +166,7 @@ public class DataHolder : MonoBehaviour
         }
     }
 
-    public void upHLead(int cost)
+    public static void upHLead(int cost)
     {
         if (withdraw(cost))
         {
@@ -187,7 +180,7 @@ public class DataHolder : MonoBehaviour
         }
     }
 
-    public void upBLead(int cost)
+    public static void upBLead(int cost)
     {
         if (withdraw(cost))
         {

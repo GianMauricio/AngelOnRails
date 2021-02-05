@@ -9,25 +9,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenuButtons : MonoBehaviour
 {
-    public GameObject dataHolder;
-
-    private DataHolder mDataHolder;
-
-    private void Start()
-    {
-        mDataHolder = dataHolder.GetComponent<DataHolder>();
-
-        //If the data holder is not found then the program will fail catastrophically
-        if (mDataHolder == null)
-        {
-            Debug.LogError("Data holder missing");
-        }
-    }
-
     public void play()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(0);
+        SceneManager.LoadScene(1);
     }
 
     public void toLastLevel()
@@ -45,6 +29,19 @@ public class MainMenuButtons : MonoBehaviour
                 SceneManager.UnloadSceneAsync("MenuScene");
                 SceneManager.LoadScene("MenuScene", LoadSceneMode.Additive);
                 break;
+        }
+    }
+
+    public void addCoins(int coins)
+    {
+        DataHolder.deposit(coins);
+    }
+
+    public void takeCoins(int coins)
+    {
+        if (!DataHolder.withdraw(coins))
+        {
+            Debug.Log("Action illegal");
         }
     }
 }
