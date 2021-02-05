@@ -16,7 +16,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
 
     //Reference to self...?
-    public AdsManager adManager;
+    //public AdsManager adManager;
    // public DataHolder data;
 
     

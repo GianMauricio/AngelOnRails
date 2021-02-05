@@ -46,12 +46,13 @@ public class DataHolder : MonoBehaviour
     //Keep an eye on this; it may cause issues since the scene it's in is always awake
     private void Awake()
     {
-       
+        coins = 0;
         NotifChannel();
 
         adManager.OnAdDone += DataHolder_OnAdDone;
          Debug.Log("Woke up");
     }
+
 
     //Set functions
     public void setMusicVol(float level)
@@ -122,7 +123,10 @@ public class DataHolder : MonoBehaviour
     {
         //coins = 0;
         Debug.Log(coins);
-        //deposit(10); testing if deposit works it does 
+        deposit(10); //testing if deposit works it does 
+                     //addendum it seems like whats happening is that dataholder is coming from different areas
+                     //DataHolder of shop is different from data holder of show rewarded ad
+                     //Data is persistent between play sessions
 
         return coins;
     }
