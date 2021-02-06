@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Advertisements;
 /// <summary>
 /// This script will contain all the menu button functions
 /// includes the options panel and level select panel as well.
 /// </summary>
 public class MainMenuButtons : MonoBehaviour
 {
+    
     public void play()
     {
         SceneManager.LoadScene(1);
     }
+    private void Awake()
+    {
+       
+        Debug.Log("Woke up");
+    }
+
 
     public void toLastLevel()
     {
@@ -44,4 +51,5 @@ public class MainMenuButtons : MonoBehaviour
             Debug.Log("Action illegal");
         }
     }
+    
 }

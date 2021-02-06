@@ -43,7 +43,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
         Advertisement.AddListener(this);
         //ShowBannerAd();
-       //adManager.OnAdDone += AdsManager_OnAdDone;
+    //   adManager.OnAdDone += AdsManager_OnAdDone;
 
     }
     
@@ -157,7 +157,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         else
         {
             //No ads found
-            Debug.Log("No ads ; A;");
+            Debug.Log("No ads ; Ad manager;");
         }
     }
 }
