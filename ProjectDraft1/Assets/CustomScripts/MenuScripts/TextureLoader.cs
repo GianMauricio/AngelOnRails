@@ -7,21 +7,5 @@ using UnityEngine;
 /// </summary>
 public class TextureLoader : MonoBehaviour
 {
-    public string BundlesRootPath
-    {
-        get
-        {
-#if UNITY_EDITOR
-            return Application.streamingAssetsPath;
-#elif UNITY_ANDROID
-return Application.persistentDataPath
-#endif
-        }
-    }
-
-    Dictionary<string, AssetBundle> LoadedBundles = new Dictionary<string, AssetBundle>();
-    public AssetBundle LoadBundle(string bundleName)
-    {
-        
-    }
+    
 }
