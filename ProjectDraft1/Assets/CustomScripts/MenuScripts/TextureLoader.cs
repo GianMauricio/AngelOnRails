@@ -13,7 +13,7 @@ public class TextureLoader : MonoBehaviour
     [Header("Materials")]
     public Material plainmat;
     public Material Walls1;
-    public Material Floor_1;
+    public Material Floor1;
     public Material FloodLightBase;
 
 
@@ -53,12 +53,12 @@ public class TextureLoader : MonoBehaviour
             /*Why load new bundle when old bundle have correct stuff?*/
             Texture emisF1 = assetManager.GetAsset<Texture>("floor_1", "Glow");
 
-            Floor_1.SetTexture("_MainTex", albedoPM);
-            Floor_1.SetTexture("_BumpMap", normalsPM);
-            Floor_1.SetTexture("_ParallaxMap", hmapPM);
-            Floor_1.SetTexture("_OcclusionMap", ambientoccPM);
-            Floor_1.SetTexture("_DetailMask", dmaskPM);
-            Floor_1.SetTexture("_EmissionMap", emisF1);
+            Floor1.SetTexture("_MainTex", albedoPM);
+            Floor1.SetTexture("_BumpMap", normalsPM);
+            Floor1.SetTexture("_ParallaxMap", hmapPM);
+            Floor1.SetTexture("_OcclusionMap", ambientoccPM);
+            Floor1.SetTexture("_DetailMask", dmaskPM);
+            Floor1.SetTexture("_EmissionMap", emisF1);
 
             //FloodLightbase
             Texture albedoFLB = assetManager.GetAsset<Texture>("floodlightbase", "Albedo");
