@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 776824640
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5839b7091132c57b2bc958136351ccfa
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/FloodLightBase/Normal.png
+- Assets/Images/FloodLightBase/Albedo.png
+Dependencies: []
