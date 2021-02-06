@@ -14,7 +14,7 @@ public class WeaponTracker : MonoBehaviour
     public AudioManager SoundBoard;
 
     //health data
-    private float MAXHEALTH = 100f;
+    private float MAXHEALTH = 100;
     private float health = 1000;
 
     //Ammunition data
@@ -125,15 +125,15 @@ public class WeaponTracker : MonoBehaviour
 
         if (GunType == "Lead")
         {
-            damage = 10;
+            damage = 10 * DataHolder.getLeadRank();
         }
         else if (GunType == "HeavyLead")
         {
-            damage = 15;
+            damage = 15 * DataHolder.getHLeadRank();
         }
         else if (GunType == "Blessed")
         {
-            damage = 20;
+            damage = 20 * DataHolder.getBLeadRank();
         }
 
         return damage;

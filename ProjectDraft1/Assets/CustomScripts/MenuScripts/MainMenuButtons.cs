@@ -9,7 +9,6 @@ using UnityEngine.Advertisements;
 /// </summary>
 public class MainMenuButtons : MonoBehaviour
 {
-    
     public void play()
     {
         SceneManager.LoadScene(1);
