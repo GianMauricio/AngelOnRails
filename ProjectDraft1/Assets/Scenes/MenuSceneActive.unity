@@ -8927,49 +8927,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945846932}
   m_CullTransparentMesh: 0
---- !u!1 &981317847
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 981317849}
-  - component: {fileID: 981317848}
-  m_Layer: 0
-  m_Name: AssetBundleManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &981317848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981317847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4db9affe42cff5043ab2244b3d1e69bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &981317849
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981317847}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 400, y: 240, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991960642
 GameObject:
   m_ObjectHideFlags: 0
@@ -12374,65 +12331,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294594184}
   m_CullTransparentMesh: 0
---- !u!1 &1299693112
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1299693114}
-  - component: {fileID: 1299693113}
-  m_Layer: 0
-  m_Name: TextureLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1299693113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299693112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54ab85d19dfd2504cb8a29dc8eb25d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  assetManager: {fileID: 981317848}
-  plainmat: {fileID: 2100000, guid: dbb4fc79dab243d46a6ec25a62b3070d, type: 2}
-  Walls1: {fileID: 2100000, guid: 2243847567dacf440b922656a84d054d, type: 2}
-  Floor1: {fileID: 2100000, guid: b4b7745312902464bbece97e0e6306a9, type: 2}
-  FloodLightBase: {fileID: 2100000, guid: 3e099ba5e8b735845b45ba77ccf8b4b0, type: 2}
-  OilDrum: {fileID: 2100000, guid: ea6415331cd78cf4eb874fdd522cd1c9, type: 2}
-  Ceiling2: {fileID: 2100000, guid: 8605a089c13cec34d827ab90a12052bf, type: 2}
-  Floor2: {fileID: 2100000, guid: 0a7cd5be0be3d7c4992e387f2977de3f, type: 2}
-  Walls2: {fileID: 2100000, guid: b4844961699d2534986058dc0cda554c, type: 2}
-  Ceiling3: {fileID: 2100000, guid: 08a5d1b395c053d49940c53cd71b5d55, type: 2}
-  DessertRoomWalls: {fileID: 2100000, guid: 7bd9244e1379f114c954a9283cbcae07, type: 2}
-  Floor3: {fileID: 2100000, guid: 216892814c5f0f84e9d1991a2a9842cb, type: 2}
-  Walls3: {fileID: 2100000, guid: b64a639e37b96c14eb5c34b9049912c1, type: 2}
-  RainBarrel: {fileID: 2100000, guid: 12700221c5b86d34f94aa86878fbf52e, type: 2}
-  RainRoomWalls: {fileID: 2100000, guid: 9fc205da4c79cf841b9e314982da39a1, type: 2}
-  ShieldOver: {fileID: 2100000, guid: 99ed34bd69b381c49a64f9a409fbbd47, type: 2}
---- !u!4 &1299693114
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299693112}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 400, y: 240, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311444931
 GameObject:
   m_ObjectHideFlags: 0
@@ -20817,6 +20715,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135998348}
   m_CullTransparentMesh: 0
+--- !u!114 &883341035630914420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883341035630914427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db9affe42cff5043ab2244b3d1e69bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &883341035630914421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883341035630914427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 400, y: 240, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &883341035630914427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883341035630914421}
+  - component: {fileID: 883341035630914420}
+  m_Layer: 0
+  m_Name: AssetBundleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &889095011479105468
 Transform:
   m_ObjectHideFlags: 0
@@ -20829,7 +20770,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889095011479105470
 GameObject:
@@ -20860,3 +20801,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1649c8b6174e84c43a19bbaf18c466dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7707199691313398084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7707199691313398086}
+  - component: {fileID: 7707199691313398085}
+  m_Layer: 0
+  m_Name: TextureLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7707199691313398085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707199691313398084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ab85d19dfd2504cb8a29dc8eb25d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetManager: {fileID: 883341035630914420}
+  plainmat: {fileID: 2100000, guid: dbb4fc79dab243d46a6ec25a62b3070d, type: 2}
+  Walls1: {fileID: 2100000, guid: 2243847567dacf440b922656a84d054d, type: 2}
+  Floor1: {fileID: 2100000, guid: b4b7745312902464bbece97e0e6306a9, type: 2}
+  FloodLightBase: {fileID: 2100000, guid: 3e099ba5e8b735845b45ba77ccf8b4b0, type: 2}
+  OilDrum: {fileID: 2100000, guid: ea6415331cd78cf4eb874fdd522cd1c9, type: 2}
+  Ceiling2: {fileID: 2100000, guid: 8605a089c13cec34d827ab90a12052bf, type: 2}
+  Floor2: {fileID: 2100000, guid: 0a7cd5be0be3d7c4992e387f2977de3f, type: 2}
+  Walls2: {fileID: 2100000, guid: b4844961699d2534986058dc0cda554c, type: 2}
+  Ceiling3: {fileID: 2100000, guid: 08a5d1b395c053d49940c53cd71b5d55, type: 2}
+  DessertRoomWalls: {fileID: 2100000, guid: 7bd9244e1379f114c954a9283cbcae07, type: 2}
+  Floor3: {fileID: 2100000, guid: 216892814c5f0f84e9d1991a2a9842cb, type: 2}
+  Walls3: {fileID: 2100000, guid: b64a639e37b96c14eb5c34b9049912c1, type: 2}
+  RainBarrel: {fileID: 2100000, guid: 12700221c5b86d34f94aa86878fbf52e, type: 2}
+  RainRoomWalls: {fileID: 2100000, guid: 9fc205da4c79cf841b9e314982da39a1, type: 2}
+  ShieldOver: {fileID: 2100000, guid: 99ed34bd69b381c49a64f9a409fbbd47, type: 2}
+--- !u!4 &7707199691313398086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707199691313398084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 400, y: 240, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

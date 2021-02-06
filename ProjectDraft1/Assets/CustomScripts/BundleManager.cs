@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class BundleManager : MonoBehaviour
 {
+
+    public void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     public string BundlesRootPath
     {
         get

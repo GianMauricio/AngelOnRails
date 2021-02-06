@@ -27,6 +27,10 @@ public class TextureLoader : MonoBehaviour
     public Material RainRoomWalls;
     public Material ShieldOver;
 
+    public void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {

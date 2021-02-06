@@ -19,9 +19,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     //public AdsManager adManager;
    // public DataHolder data;
 
-    
-   
-
     public string GameID
     {
         get
