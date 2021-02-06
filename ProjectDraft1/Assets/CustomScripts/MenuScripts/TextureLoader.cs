@@ -19,6 +19,13 @@ public class TextureLoader : MonoBehaviour
     public Material Ceiling2;
     public Material Floor2;
     public Material Walls2;
+    public Material Ceiling3;
+    public Material DessertRoomWalls;
+    public Material Floor3;
+    public Material Walls3;
+    public Material RainBarrel;
+    public Material RainRoomWalls;
+    public Material ShieldOver;
 
 
     void Start()
@@ -105,6 +112,43 @@ public class TextureLoader : MonoBehaviour
 
 
         //Room3
+        //Ceiling3
+        Ceiling3.SetTexture("_BumpMap", normalsPM);
+        Ceiling3.SetTexture("_OcclusionMap", ambientoccC2);
 
+        //DessertRoomWalls
+        Texture ambientoccDRW = assetManager.GetAsset<Texture>("dessertroomwalls", "AmbOc");
+
+        DessertRoomWalls.SetTexture("_MainTex", emisW2);
+        DessertRoomWalls.SetTexture("_BumpMap", normalsPM);
+        DessertRoomWalls.SetTexture("_OcclusionMap", ambientoccDRW);
+        DessertRoomWalls.SetTexture("_EmissionMap", emisW2);
+
+        //Floor_3
+        Floor3.SetTexture("_BumpMap", normalsF2);
+        Floor3.SetTexture("_ParallaxMap", hmapF2);
+        Floor3.SetTexture("_OcclusionMap", ambientoccF2);
+
+        //Walls3
+        Walls3.SetTexture("_MainTex", emisW2);
+        Walls3.SetTexture("_BumpMap", normalsPM);
+        Walls3.SetTexture("_OcclusionMap", ambientoccDRW);
+        Walls3.SetTexture("_EmissionMap", emisW2);
+
+        //RainBarrel
+        RainBarrel.SetTexture("_BumpMap", normalsOD);
+        RainBarrel.SetTexture("_DetailMask", dmaskOD);
+        RainBarrel.SetTexture("_DetailAlbedoMap", albedo2OD);
+
+        //RainRoomWalls
+        RainRoomWalls.SetTexture("_MainTex", emisW2);
+        RainRoomWalls.SetTexture("_BumpMap", normalsPM);
+        RainRoomWalls.SetTexture("_OcclusionMap", ambientoccDRW);
+        RainRoomWalls.SetTexture("_EmissionMap", emisW2);
+
+        //ShieldOver
+        Texture albedoSO = assetManager.GetAsset<Texture>("shieldover", "Albedo");
+
+        ShieldOver.SetTexture("_MainTex", albedoSO);
     }
 }

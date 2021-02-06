@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2311170486
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e0a5a0187a268242f00c50140fad8823
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/DessertRoomWalls/AmbOc.png
+Dependencies: []

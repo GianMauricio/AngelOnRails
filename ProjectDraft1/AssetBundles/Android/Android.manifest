@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 932890707
+CRC: 1934646436
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -16,4 +16,16 @@ AssetBundleManifest:
       Dependencies: {}
     Info_4:
       Name: oildrum
+      Dependencies: {}
+    Info_5:
+      Name: ceiling2
+      Dependencies: {}
+    Info_6:
+      Name: floor_2
+      Dependencies: {}
+    Info_7:
+      Name: dessertroomwalls
+      Dependencies: {}
+    Info_8:
+      Name: walls_2
       Dependencies: {}

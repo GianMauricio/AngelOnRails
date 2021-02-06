@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2603639088
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 22f7775c7d0e72453199928f5ac6a273
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/Floor_2/HeightMap.png
+- Assets/Images/Floor_2/AmbOc.png
+- Assets/Images/Floor_2/Normal.png
+Dependencies: []

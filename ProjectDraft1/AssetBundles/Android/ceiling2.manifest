@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 114825309
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a2e62a8e4c50d08e642af26cf66cd263
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/Ceiling2/AmbOc.png
+Dependencies: []
