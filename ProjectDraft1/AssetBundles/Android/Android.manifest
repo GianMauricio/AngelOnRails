@@ -1,7 +1,13 @@
 ManifestFileVersion: 0
-CRC: 647188720
+CRC: 1111291842
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: plainmat
+      Dependencies: {}
+    Info_1:
+      Name: walls1
+      Dependencies: {}
+    Info_2:
+      Name: floor_1
       Dependencies: {}

@@ -12401,6 +12401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ab85d19dfd2504cb8a29dc8eb25d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assetManager: {fileID: 0}
+  plainmat: {fileID: 2100000, guid: dbb4fc79dab243d46a6ec25a62b3070d, type: 2}
 --- !u!4 &1299693114
 Transform:
   m_ObjectHideFlags: 0

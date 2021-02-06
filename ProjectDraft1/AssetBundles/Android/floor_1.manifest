@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3462618313
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a8a9d210ea152a9d300feed906512312
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/Floor_1/Glow.png
+Dependencies: []
