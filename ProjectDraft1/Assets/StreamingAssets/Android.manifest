@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3710949162
+CRC: 647188720
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: metaltextures
+      Name: plainmat
       Dependencies: {}

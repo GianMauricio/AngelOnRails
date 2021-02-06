@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1719045986
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8017db9d52345ed2a8a3b8bc0c0074cd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/plainMat/Concrete 2.png
+- Assets/Images/plainMat/Concrete 2 Occlusion.png
+- Assets/Images/plainMat/Concrete 2 Displacement.png
+- Assets/Images/plainMat/Stone 3 Occlusion.png
+- Assets/Images/plainMat/Metal 1 Normals.png
+Dependencies: []
