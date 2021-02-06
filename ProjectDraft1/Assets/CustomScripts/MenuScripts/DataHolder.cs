@@ -27,7 +27,7 @@ public class DataHolder : MonoBehaviour
     public static AudioMixer SFX;
 
     //Ad manager
-    public AdsManager adManager;
+    //public AdsManager adManager;
 
 
     /// <summary>
@@ -48,7 +48,7 @@ public class DataHolder : MonoBehaviour
         coins = 0;
         NotifChannel();
 
-        adManager.OnAdDone += DataHolder_OnAdDone;
+       // adManager.OnAdDone += DataHolder_OnAdDone;
         Debug.Log("Woke up");
     }
 
@@ -241,27 +241,5 @@ public class DataHolder : MonoBehaviour
 
     }
 
-    //Added the admanager adding currency when ad is done
-    private void DataHolder_OnAdDone(object sender, AdFinishEventArgs e)
-    {
-        if(e.PlacementID == AdsManager.adRewarded)
-        {
-            switch (e.AdShowResult)
-            {
-                case ShowResult.Failed:
-                    Debug.Log("Ad failed to show");
-                    break;
-                case ShowResult.Skipped:
-                    Debug.Log("Betrayal!! ; A;");
-                    break;
-                case ShowResult.Finished:
-                    deposit(120);
-                    Debug.Log("Ad is finished completed");
-                    
-                    break;
-            }
-        }
-        Debug.Log("Dataholder ad done " + coins);
-       
-    }
+   
 }

@@ -3671,7 +3671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &460461959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10482,7 +10482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1098916399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10576,6 +10576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currCoins: {fileID: 525342094}
+  adManager: {fileID: 889095011479105471}
+  MainMenu: {fileID: 460461963}
 --- !u!1 &1104745132
 GameObject:
   m_ObjectHideFlags: 0
@@ -12406,6 +12408,10 @@ MonoBehaviour:
   Walls1: {fileID: 2100000, guid: 2243847567dacf440b922656a84d054d, type: 2}
   Floor1: {fileID: 2100000, guid: b4b7745312902464bbece97e0e6306a9, type: 2}
   FloodLightBase: {fileID: 2100000, guid: 3e099ba5e8b735845b45ba77ccf8b4b0, type: 2}
+  OilDrum: {fileID: 0}
+  Ceiling2: {fileID: 0}
+  Floor2: {fileID: 0}
+  Walls2: {fileID: 0}
 --- !u!4 &1299693114
 Transform:
   m_ObjectHideFlags: 0
@@ -13721,18 +13727,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1431281372}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1098916403}
-        m_MethodName: UIUpdate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1431281372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15125,8 +15120,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 225}
-  m_SizeDelta: {x: -99.99999, y: -600}
+  m_AnchoredPosition: {x: -7.800049, y: 201.80005}
+  m_SizeDelta: {x: -115.53677, y: -553.6062}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1586999954
 MonoBehaviour:
@@ -20815,3 +20810,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135998348}
   m_CullTransparentMesh: 0
+--- !u!4 &889095011479105468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889095011479105470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1276.5164, y: 707.70013, z: -36.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &889095011479105470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 889095011479105468}
+  - component: {fileID: 889095011479105471}
+  m_Layer: 0
+  m_Name: Admanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &889095011479105471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889095011479105470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1649c8b6174e84c43a19bbaf18c466dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
