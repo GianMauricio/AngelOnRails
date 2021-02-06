@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour, ISwiped, ITwoFingerPan
 
     //Track player timer stuff
     private float timeExposed = 0;
-    private float MAXTIME = 1.0f; /*TODO:Make this not 1 second in final*/
+    private float MAXTIME = 5.0f; /*TODO:Make this not 1 second in final*/
 
     [Tooltip("Keep this really small or risk losing tap inputs")]
     private float tapTimer = 0.002f;
