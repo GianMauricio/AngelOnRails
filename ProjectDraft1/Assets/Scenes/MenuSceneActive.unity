@@ -12401,8 +12401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ab85d19dfd2504cb8a29dc8eb25d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assetManager: {fileID: 0}
+  assetManager: {fileID: 981317848}
   plainmat: {fileID: 2100000, guid: dbb4fc79dab243d46a6ec25a62b3070d, type: 2}
+  Walls1: {fileID: 2100000, guid: 2243847567dacf440b922656a84d054d, type: 2}
+  Floor1: {fileID: 2100000, guid: b4b7745312902464bbece97e0e6306a9, type: 2}
+  FloodLightBase: {fileID: 2100000, guid: 3e099ba5e8b735845b45ba77ccf8b4b0, type: 2}
 --- !u!4 &1299693114
 Transform:
   m_ObjectHideFlags: 0
