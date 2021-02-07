@@ -1,0 +1,79 @@
+ManifestFileVersion: 0
+CRC: 2035662037
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 09c9f7debfcb9d7367a64f61acee53b8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 11.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 5 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 14 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 7 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 11 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 5.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 17 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 13 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 4.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 1 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 17.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal Rust.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 7 Version1_1.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 16 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 7 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 10 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 11 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal Rust DetailMask.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 2 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 17 Metallic.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 14.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 11 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 12 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal Rust 2 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 10 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 4 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal Rust Metallic.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 9 Metallic.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 15.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal Rust 2.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 16 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 8.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 12 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 6 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 10.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 4 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 12 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 16 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 14 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 1 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 3.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 15 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 12 Emission.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 15 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 15 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 2 Emission.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 6 Occlusion.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 2.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 7 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 2 AO.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal Rust Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 6 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 17 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 12.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 2 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 4 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 5 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 17 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 16.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 10 Normals.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 5 Displacement.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal Emission Mask.png
+- Assets/Imported/PBS Materials Variety Pack/Metal/Textures/Metal 14 Occlusion.png
+Dependencies: []

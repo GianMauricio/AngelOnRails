@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2523812054
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 86b3f914faa321ae131110a35cc337f8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/OilDrum/DetMask.png
+- Assets/Images/OilDrum/Albedo2.png
+- Assets/Images/OilDrum/Normal.png
+Dependencies: []

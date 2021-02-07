@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 66242409
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4cade7eff0e068a0b9f06bb32420b00b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7859cd501ea75098bcf7e53f1b477c26
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Images/Walls1/Normal.png
+- Assets/Images/Walls1/Glow.png
+- Assets/Images/Walls1/Albedo.png
+- Assets/Images/Walls1/AmbOc.png
+- Assets/Images/Walls1/HeightMap.png
+Dependencies: []
